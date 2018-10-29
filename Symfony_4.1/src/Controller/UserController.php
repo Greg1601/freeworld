@@ -39,69 +39,91 @@ class UserController extends AbstractController
         return $this->json($data);
     }
 
-    /**
-     * Creates a new person entity.
-     *
-     * @Route("/signup", name="user_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request, \Swift_Mailer $mailer, UserPasswordEncoderInterface $encoder)
-    {
-
-        $user = new Person;
-
-//        $encodedPassword = $encoder->encodePassword($user, ($request->request->get('password')));
-//        $citySlug = strtolower($request->request->get('city'));
-
-        $user->setUsername($request->request->get('username'));
-        $user->setEmail($request->request->get('email'));
-        $user->setDescription($request->request->get('description'));
-        $user->setPassword($encoder->encodePassword($user, ($request->request->get('password'))));
-        $user->setIsActive('1');
-        $user->setRoleId($this->getDoctrine()->getManager()->getRepository(Role::class)->findOneById('1'));
-        $user->setCity($this->getDoctrine()->getManager()->getRepository(city::class)->findOneBySlug(strtolower($request->request->get('city'))));
-//        dump($role);die;
-
+//    /**
+//     * Creates a new person entity.
+//     *
+//     * @Route("/signup", name="user_new")
+//     * @Method({"GET", "POST"})
+//     */
+//    public function newAction(Request $request, \Swift_Mailer $mailer, UserPasswordEncoderInterface $encoder)
+//    {
+//
+//        $user = new Person;
+//
+//
+////        $user->setUsername($request->request->get('username'));
+////        $user->setEmail($request->request->get('email'));
+////        $user->setDescription($request->request->get('description'));
+////        $user->setIsActive('1');
+////        $user->setCity($this->getDoctrine()->getManager()->getRepository(city::class)->findOneBySlug(strtolower($request->request->get('city'))));
+////        dump($role);die;
+//
 //        $data = $request->getContent();
 //        $decoded = json_decode($data, true);
 //
+//        $encodedPassword = $encoder->encodePassword($user, ($request->request->get('password')));
+//        $citySlug = strtolower($request->request->get('city'));
+//        $user->setPassword($encodedPassword);
 //        $user->setUsername($decoded['username']);
 //        $user->setEmail($decoded['email']);
 //        $user->setDescription($decoded['description']);
+////        $user->setRoleId($this->getDoctrine()->getManager()->getRepository(Role::class)->findOneById('1'));
 //        $user->setCity(
 //            $this->getDoctrine()
 //                ->getRepository(City::class)
 //                ->findOneBySlug($citySlug)
 //        );
-
-        $this->getDoctrine()->getManager()->persist($user);
-        $this->getDoctrine()->getManager()->flush();
-
-//        // Envoi d'un mail automatique avec swiftMailer
-//        $message = (new \Swift_Message('Hello Email'))
-//            ->setFrom('freeworld.project.2018@gmail.com')
-//            ->setTo($decoded['email'])
-//            ->setBody(
-//                $this->renderView(
-//                // app/Resources/views/Emails/registration.html.twig
-//                    'Emails/registration.html.twig',
-//                    array('username' => $decoded['username'])
-//                ),
-//                'text/html'
-//            )
-//        ;
 //
-//        $mailer->send($message);
+//        $this->getDoctrine()->getManager()->persist($user);
+//        $this->getDoctrine()->getManager()->flush();
+//
+////        // Envoi d'un mail automatique avec swiftMailer
+////        $message = (new \Swift_Message('Hello Email'))
+////            ->setFrom('freeworld.project.2018@gmail.com')
+////            ->setTo($decoded['email'])
+////            ->setBody(
+////                $this->renderView(
+////                // app/Resources/views/Emails/registration.html.twig
+////                    'Emails/registration.html.twig',
+////                    array('username' => $decoded['username'])
+////                ),
+////                'text/html'
+////            )
+////        ;
+////
+////        $mailer->send($message);
+//
+//
+//        return $this->json(
+//            $decoded['username']
+//        );
+//
+//    }
 
 
-        return $this->json(
-            ['Nouvel Utilisateur' => $request->request->get('username'), 'Email' => 'Email sent']
-        );
+    public function register(Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $data = $request->getContent();
+        $decoded = json_decode($data, true);
+//        $username = $request->request->get('username');
+//        $password = $request->request->get('password');
+//        dump($em);die;
+        $user = new Person;
+        $user->setUsername($decoded['username']);
+        $user->setPassword($encoder->encodePassword($user, $decoded['password']));
+        $user->setEmail($decoded['email']);
+        $user->setDescription($decoded['description']);
+        $user->setCity($this->getDoctrine()->getManager()->getRepository(city::class)->findOneBySlug(strtolower($decoded['city'])));
 
+        $em->persist($user);
+        $em->flush();
+        return new Response(sprintf('User %s successfully created', $user->getUsername()));
     }
-
-
-
+    public function api()
+    {
+        return new Response(sprintf('Logged in as %s', $this->getUser()->getUsername()));
+    }
 
 
 //    /**
@@ -124,6 +146,30 @@ class UserController extends AbstractController
 //
 //    }
 
+    /**
+     * Finds and displays a person entity.
+     *
+     * @Route("/getLogs", name="user_getLogs")
+     * @Method("POST")
+     */
+    public function GetLogsAction(Request $request)
+    {
+
+//        $em = $this->getDoctrine()->getManager();
+        $data = $request->getContent();
+        $decoded = json_decode($data, true);
+
+        $user = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('App:Person')
+            ->findOneByEmail($decoded['email']);
+//        dump($user);die;
+
+        return $this->json(
+            array('username' => $user->getUsername()),
+            Response::HTTP_OK
+        );
+    }
 
     /**
      * Finds and displays a person entity.

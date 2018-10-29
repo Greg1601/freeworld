@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use App\Entity\Role;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -87,7 +89,7 @@ class Person implements UserInterface
         $this->events = new ArrayCollection();
         $this->places = new ArrayCollection();
         $this->posts = new ArrayCollection();
-        $this->role = '1';
+        $this->is_active = 1;
     }
 
     public function getId(): ?int
@@ -119,17 +121,17 @@ class Person implements UserInterface
         return $this;
     }
 
-//    public function getRole(): ?string
-//    {
-//        return $this->role;
-//    }
-//
-//    public function setRole(string $role): self
-//    {
-//        $this->role = $role;
-//
-//        return $this;
-//    }
+    public function getRole(): ?Integer
+    {
+        return $this->role;
+    }
+
+    public function setRole(Integer $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
 
     public function getEmail(): ?string
     {
