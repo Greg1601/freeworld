@@ -123,7 +123,7 @@ class Header extends React.Component {
                       }}
                      open={open}
                      onClose={this.handleClose}
-                     onClick={this.props.getUserInfo(this.props.token,this.props.userId)}
+                     onClick={this.props.getUserInfo(this.props.userId,this.props.token)}
                    >
                      <MenuItem onClick={this.handleClose}>
                        <NavLink

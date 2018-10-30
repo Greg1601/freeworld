@@ -182,14 +182,14 @@ class UserController extends AbstractController
     public function showAction(Request $request)
     {
 
+
        $data = $request->getContent();
        $decoded = json_decode($data, true);
 
        $user = $this->getDoctrine()
            ->getManager()
            ->getRepository('App:Person')
-           ->findOneById(json_decode($request->getContent(), true)[$decoded['id']]);
-//        dump($user);die;
+           ->findOneById($decoded['userId']);
 
         return $this->json(
             array('Name' => $user->getUsername(),
