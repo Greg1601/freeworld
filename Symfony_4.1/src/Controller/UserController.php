@@ -166,24 +166,29 @@ class UserController extends AbstractController
 //        dump($user);die;
 
         return $this->json(
-            array('username' => $user->getUsername()),
+            array('username' => $user->getUsername(),
+                'userId' => $user->getId(),
+                'email' => $user->getEmail(),
             Response::HTTP_OK
-        );
+        ));
     }
 
     /**
      * Finds and displays a person entity.
      *
-     * @Route("/{id}/show", name="person_show")
+     * @Route("/show", name="person_show")
      * @Method("POST")
      */
-    public function showAction(Request $request, $id)
+    public function showAction(Request $request)
     {
 
-        $user = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('App:Person')
-            ->findOneById($id);
+       $data = $request->getContent();
+       $decoded = json_decode($data, true);
+
+       $user = $this->getDoctrine()
+           ->getManager()
+           ->getRepository('App:Person')
+           ->findOneById(json_decode($request->getContent(), true)[$decoded['id']]);
 //        dump($user);die;
 
         return $this->json(

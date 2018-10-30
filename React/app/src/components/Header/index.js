@@ -65,7 +65,7 @@ class Header extends React.Component {
      return (
        <div>
          <header>
-           <div className="header">
+           <div className="header" style={headerColor}>
              <div className="header-connect">
                <NavLink
                  exact
@@ -123,7 +123,7 @@ class Header extends React.Component {
                       }}
                      open={open}
                      onClose={this.handleClose}
-                     onClick={this.props.getUserInfo(this.props.userId)}
+                     onClick={this.props.getUserInfo(this.props.token,this.props.userId)}
                    >
                      <MenuItem onClick={this.handleClose}>
                        <NavLink

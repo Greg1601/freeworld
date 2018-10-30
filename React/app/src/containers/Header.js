@@ -15,6 +15,7 @@ import Header from 'src/components/Header';
 const mapStateToProps = state => ({
   username: state.currentUser,
   userId: state.userId,
+  token: state.token,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,10 +24,11 @@ const mapDispatchToProps = dispatch => ({
       type: 'LOGOUT',
     });
   },
-  getUserInfo: userId => () => {
+  getUserInfo: (userId, token) => () => {
     dispatch({
       type: 'GET_USER_INFO',
       userId,
+      token,
     });
   },
 });
