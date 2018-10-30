@@ -70,7 +70,7 @@ const WebSocket = store => next => (action) => {
       })
         .then(response =>
           store.dispatch({
-            type: 'T',
+            type: 'TOKEN',
             token: response.data.token,
           },
           axios.post('http://127.0.0.1:8000/user/getLogs', {
@@ -78,7 +78,7 @@ const WebSocket = store => next => (action) => {
             email: action.email,
           })
             .then(response => store.dispatch({
-              type: 'TOKEN',
+              type: 'LOGS',
               userId: response.data.id,
               username: action.username,
               email: response.data.email,
