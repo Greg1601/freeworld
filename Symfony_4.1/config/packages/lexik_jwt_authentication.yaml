@@ -20,5 +20,5 @@ lexik_jwt_authentication:
 
         # check token in query string parameter
         query_parameter:
-            enabled: false
+            enabled: true
             name:    bearer
