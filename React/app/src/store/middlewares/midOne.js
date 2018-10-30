@@ -79,7 +79,7 @@ const WebSocket = store => next => (action) => {
           })
             .then(response => store.dispatch({
               type: 'LOGS',
-              userId: response.data.id,
+              userId: response.data.userId,
               username: response.data.username,
               email: response.data.email,
             }))

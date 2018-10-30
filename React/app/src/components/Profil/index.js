@@ -36,6 +36,7 @@ class Profil extends React.Component {
   render() {
     const { view } = this.state;
     const { classes, currentUser, email } = this.props;
+    console.log(this.props)
     if (currentUser) {
       return (
         <div>

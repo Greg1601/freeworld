@@ -103,8 +103,6 @@ class Carte extends Component {
       categories,
     } = this.props;
 
-    console.log(this.props.categories)
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => getLocation(position));
       if (coords && !nodes) {
