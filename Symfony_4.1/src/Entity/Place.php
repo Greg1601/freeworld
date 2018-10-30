@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Place
 {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

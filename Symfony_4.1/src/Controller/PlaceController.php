@@ -29,6 +29,8 @@ class PlaceController extends AbstractController
      */
     public function indexAction()
     {
+
+
         // Récupération de la liste
         $places = $this->getDoctrine()
             ->getManager()
@@ -48,7 +50,7 @@ class PlaceController extends AbstractController
                     'Negative' => $place->getNegativeOpinion(),
                     'Longitude' => $place->getLongitudeDeg(),
                     'Latitude' => $place->getLatitudeDeg(),
-                    'Access' => $place->getAccessibilities(),
+//                    'Access' => $place->getAccessibilities(),
                     'Placetype' => $place->getType(),
                 );
             }
