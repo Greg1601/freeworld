@@ -48,6 +48,7 @@ const styles = theme => ({
   },
   actions: {
     textAlign: 'center',
+    margin: '0.5em',
   },
   expand: {
     transform: 'rotate(0deg)',

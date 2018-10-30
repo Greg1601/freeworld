@@ -121,7 +121,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <Header routes={routes} />
+        <Header routes={routes} location={this.props.location} />
         <div className="container">
           <Switch>
             {Object.keys(routes).map(path => (

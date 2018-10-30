@@ -39,6 +39,30 @@ const WebSocket = store => next => (action) => {
             }))
             .catch(error => console.log(error)));
       break;
+    // case 'LOGIN_REQUEST':
+    //   axios.post('http://127.0.0.1:8000/api/login_check', {
+    //     email: action.email,
+    //     password: action.password,
+    //   })
+    //     .then(response =>
+    //       store.dispatch({
+    //         type: 'T',
+    //         token: response.data.token,
+    //       },
+    //       axios.post('http://127.0.0.1:8000/getLogs', {
+    //         token: response.data.token,
+    //       })
+    //         .then(response => store.dispatch({
+    //           type: 'TOKEN',
+    //           userId: response.data.id,
+    //           username: action.username,
+    //           email: response.data.email,
+    //         }))
+    //         .catch(() => store.dispatch({
+    //           type: 'FAIL_LOGIN',
+    //         }))
+    //       ));
+    //   break;
     case 'LOGIN_REQUEST':
       axios.post('http://127.0.0.1:8002/login', {
         username: action.username,

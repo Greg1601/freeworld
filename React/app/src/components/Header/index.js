@@ -60,6 +60,7 @@ class Header extends React.Component {
    render() {
      const { classes } = this.props;
      const { auth, anchorEl } = this.state;
+     const headerColor = this.props.location.pathname === '/' ? { background: 'transparent' } : { background: 'black' };
      const open = Boolean(anchorEl);
      return (
        <div>

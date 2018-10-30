@@ -20,6 +20,26 @@ const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 120,
+    [theme.breakpoints.down('md')]: {
+      width: '50%',
+    },
+  },
+  select: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: '2.5em',
+      marginTop: '0.5em',
+    },
+  },
+  li: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: '2.5em',
+      padding: '0.5em',
+    },
+  },
+  label: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: '2.5em',
+    },
   },
 });
 
@@ -97,23 +117,25 @@ class Carte extends Component {
       else if (coords && nodes) {
         return (
           <div id="map-container">
-            <form>
+            <form id="map-container-form">
               <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="category">Catégories</InputLabel>
+                <InputLabel className={classes.label} htmlFor="category">Catégories</InputLabel>
                 <Select
                   value={this.state.placetype}
                   name="category"
+                  className={classes.select}
                   onChange={this.filterCategory}
                   inputProps={{
                     name: 'category',
                     id: 'category',
                   }}
                 >
-                  <MenuItem value="all">Tous les catégories</MenuItem>
+                  <MenuItem className={classes.li} value="all">Tous les catégories</MenuItem>
                   {categories.map(node => (
                     <MenuItem
                       key={node.identifier}
                       value={node.id}
+                      className={classes.li}
                     >
                       {node.localized_name}
                     </MenuItem>
@@ -138,7 +160,7 @@ class Carte extends Component {
                   position={[point.lat, point.lon]}
                   icon={myIcon(point.category.id)}
                 >
-                  <Popup>
+                  <Popup className="map-popup">
                     <div>
                       <h3><span>Catégorie : </span>{point.category.identifier}</h3>
                       <h4><span>Type : </span>{point.node_type.identifier}</h4>
