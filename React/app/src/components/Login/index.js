@@ -20,13 +20,13 @@ const styles = theme => ({
 
 class Login extends React.Component {
   static propTypes = {
-    username: PropTypes.string,
+    email: PropTypes.string,
     password: PropTypes.string,
     logged: PropTypes.bool,
     currentUser: PropTypes.string,
   }
   static defaultProps = {
-    username: '',
+    email: '',
     password: '',
     logged: false,
     currentUser: false,
@@ -41,13 +41,13 @@ class Login extends React.Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
     const {
-      username,
+      email,
       password,
       loginRequest,
       logged,
     } = this.props;
 
-    loginRequest(username, password);
+    loginRequest(email, password);
     if (!logged) {
       setTimeout(() => this.setState({ open: true }), 1000);
     }
@@ -97,8 +97,8 @@ class Login extends React.Component {
         />
         <form onSubmit={this.handleSubmit} >
           <FieldInput
-            name="username"
-            placeholder="Username"
+            name="email"
+            placeholder="Email"
             type="text"
           />
           <FieldInput

@@ -21,6 +21,7 @@ class Signup extends React.Component {
       description,
       city,
     } = this.props;
+    console.log(this.props);
     this.props.signupRequest(username, email, password, description, city);
   }
   render() {

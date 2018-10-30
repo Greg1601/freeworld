@@ -2,6 +2,7 @@ security:
     encoders:
         App\Entity\Person:
             algorithm: bcrypt
+
     providers:
         user_provider:
             entity:
@@ -20,12 +21,16 @@ security:
                 check_path: /api/login_check
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-                provider: user_provider
+#                provider: user_provider
                 username_path: email
                 password_path: password
             logout:
                 path:   /logout
                 target: /
+        register:
+            pattern:  ^/register
+            stateless: true
+            anonymous: true
 
         api:
             pattern:   ^/api

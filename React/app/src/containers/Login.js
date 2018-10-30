@@ -15,17 +15,17 @@ import Login from 'src/components/Login';
 // State
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
-  username: state.username,
+  email: state.email,
   password: state.password,
   logged: state.logged,
 });
 
 // Actions
 const mapDispatchToProps = dispatch => ({
-  loginRequest: (username, password) => {
+  loginRequest: (email, password) => {
     dispatch({
       type: 'LOGIN_REQUEST',
-      username,
+      email,
       password,
     });
   },
