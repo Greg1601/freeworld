@@ -113,6 +113,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         // token: action.token,
+        token: action.token,
+      };
+    case 'LOGS':
+      return {
+        ...state,
+        // token: action.token,
         logged: true,
         userId: action.userId,
         currentUser: action.username,

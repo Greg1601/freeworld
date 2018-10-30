@@ -18,6 +18,7 @@ const mapStateToProps = state => ({
   email: state.email,
   password: state.password,
   logged: state.logged,
+  token: state.token,
 });
 
 // Actions
