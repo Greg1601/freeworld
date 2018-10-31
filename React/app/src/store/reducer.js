@@ -196,6 +196,7 @@ const reducer = (state = initialState, action = {}) => {
       };
     case 'STORE_INFO_BDD':
       return {
+        ...state,
         currentPointBdd: action.currentPointBdd,
       };
     case 'CLEAN_CURRENT_POINT':
