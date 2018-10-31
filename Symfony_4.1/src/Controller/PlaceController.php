@@ -29,6 +29,8 @@ class PlaceController extends AbstractController
      */
     public function indexAction()
     {
+
+
         // Récupération de la liste
         $places = $this->getDoctrine()
             ->getManager()
@@ -48,7 +50,7 @@ class PlaceController extends AbstractController
                     'Negative' => $place->getNegativeOpinion(),
                     'Longitude' => $place->getLongitudeDeg(),
                     'Latitude' => $place->getLatitudeDeg(),
-                    'Access' => $place->getAccessibilities(),
+//                    'Access' => $place->getAccessibilities(),
                     'Placetype' => $place->getType(),
                 );
             }
@@ -67,21 +69,21 @@ class PlaceController extends AbstractController
     {
 
         // Récupération des données envoyées par le front
-//        $data = $request->getContent();
+        $data = $request->getContent();
         // Décodage des données
-        $decoded = json_decode($request, true);
+        $decoded = json_decode($data, true);
 
         // Récupération de l'info City puis "slugification"
-        $city = $request->request->get('placecity');
+        $city = $decoded['placecity'];
         $citySlug = strtolower($city);
 //        dump($citySlug);die;
 
         // Récupération de l'ID utilisateur
-        $userId = $request->request->get('userId');
+        $userId = $decoded['userId'];
 
         // Création de la nouvelle entité et ajout des données récupérées puis décodées
         $place = new Place();
-        $place->setName($request->request->get('placename'));
+        $place->setName($decoded['placename']);
 
         $place->setCityId(
             $this->getDoctrine()
@@ -94,11 +96,11 @@ class PlaceController extends AbstractController
                 ->findOneById($userId)
         );
 
-        $place->setAddress($request->request->get('placeaddress'));
-        $place->setDescription($request->request->get('placedescription'));
-        $place->setLatitudeDeg($request->request->get('lat'));
-        $place->setLongitudeDeg($request->request->get('lng'));
-        $place->setType($request->request->get('placetype'));
+        $place->setAddress($decoded['placeaddress']);
+        $place->setDescription($decoded['placedescription']);
+        $place->setLatitudeDeg($decoded['lat']);
+        $place->setLongitudeDeg($decoded['lng']);
+        $place->setType($decoded['placetype']);
 
         // gestion des ajouts d'équipment dans la table place_accessibility
         // Le front ne récupère pas la liste en dynamique, pour le moment les éléments sont gérés en dur
@@ -143,17 +145,20 @@ class PlaceController extends AbstractController
     /**
      * Finds and displays a place entity.
      *
-     * @Route("/{id}/show", name="place_show")
+     * @Route("/show", name="place_show")
      * @Method("Post")
      */
-    public function showAction(Request $request, $id)
+    public function showAction(Request $request)
     {
 
         // Récupération de l'info 'id" du lieu qu'on veut afficher
         $place = $this->getDoctrine()
             ->getManager()
             ->getRepository('App:Place')
-            ->findOneById($id);
+            ->findOneById(
+                json_decode($request->getContent(), true)['id']
+            )
+        ;
 
         // renvoi des données récupérées en BDD
         return $this->json(

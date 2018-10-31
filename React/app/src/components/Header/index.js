@@ -32,11 +32,6 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
-  bar: {
-    backgroundColor: 'black',
-    position: 'fixed',
-    top: 0,
-  },
 };
 
 class Header extends React.Component {
