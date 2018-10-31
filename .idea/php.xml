@@ -65,7 +65,6 @@
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/symfony/phpunit-bridge" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/symfony/web-profiler-bundle" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/symfony/web-link" />
-      <path value="$PROJECT_DIR$/Symfony_4.1/vendor/symfony/panther" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/symfony/inflector" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/symfony/debug-bundle" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/symfony/orm-pack" />
@@ -91,7 +90,6 @@
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/jdorn/sql-formatter" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/symfony/security-bundle" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/egulias/email-validator" />
-      <path value="$PROJECT_DIR$/Symfony_4.1/vendor/facebook/webdriver" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/zendframework/zend-eventmanager" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/zendframework/zend-code" />

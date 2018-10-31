@@ -21,14 +21,19 @@ class PostController extends AbstractController
     /**
      * Lists all post entities by place Id.
      *
-     * @Route("/{id}/list", name="post_index")
+     * @Route("/list", name="post_index")
      * @Method({"POST"})
      */
-    public function listPostsByPlaceId(Request $request, $id)
+    public function listPostsByPlaceId(Request $request)
     {
+
+        $data = $request->getContent();
+        $decoded = json_decode($data, true);
+
         $posts = $this->getDoctrine()
             ->getManager()
-            ->getRepository('App:Post')->findByPlaceId($id);
+            ->getRepository('App:Post')
+            ->findByPlace($decoded['placeId']);
 
 
         foreach ($posts as $post) {
@@ -52,26 +57,26 @@ class PostController extends AbstractController
      */
     public function addPost(Request $request)
     {
-//        $placeId = json_decode($request->getContent(), true)['postplaceid'];
-        $user = json_decode($request->request->get('userId'));
+
+        $user = json_decode($request->getContent(), true)['userId'];
 
         $targetPlace = $this->getDoctrine()
             ->getRepository(Place::class)
-            ->findOneById($request->request->get('placeId'));
+            ->findOneById(json_decode($request->getContent(), true)['placeId']);
 
         $post = new Post();
-        $post->setTitle($request->request->get('titleComment'));
+        $post->setTitle(json_decode($request->getContent(), true)['titlecomment']);
         $post->setPlace($targetPlace);
 
-        $post->setUser(
+        $post->setAuthor(
             $this->getDoctrine()
                 ->getRepository(Person::class)
                 ->findOneById($user)
         );
-        $post->setBody($request->request->get('comment'));
+        $post->setBody(json_decode($request->getContent(), true)['comment']);
 
         // récupération de la valeur 'vote' de l'entité Place visée (0 pour un vote negatif, 1 pour un vote positif)
-        $vote = $request->request->get('vote');
+        $vote = json_decode($request->getContent(), true)['vote'];
         // Si la valeur de 'vote' est '0', on incrémente 'negative opinion'
         if ($vote >= 0){
             $newPositiveOpinion = $targetPlace->getPositiveOpinion() +1;
@@ -91,13 +96,6 @@ class PostController extends AbstractController
             ['New Post' => $post->getTitle()],
             Response::HTTP_OK
         );
-
-//        $data = $request->getContent();
-//
-//        return $this->json(
-//            ['test' => $data],
-//            Response::HTTP_OK
-//        );
     }
 
     /**

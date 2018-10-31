@@ -23,7 +23,6 @@
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/doctrine/reflection" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/easycorp/easy-log-handler" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/egulias/email-validator" />
-      <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/facebook/webdriver" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/fig/link-util" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/jdorn/sql-formatter" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/lcobucci/jwt" />
@@ -74,7 +73,6 @@
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/symfony/monolog-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/symfony/options-resolver" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/symfony/orm-pack" />
-      <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/symfony/panther" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/symfony/phpunit-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/symfony/polyfill-intl-icu" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/symfony/polyfill-mbstring" />
