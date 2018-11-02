@@ -64,10 +64,10 @@ class CityController extends AbstractController
     public function searchAction($slug)
     {
         // On normalise le placeholder
-        $slug = strtolower($slug);
+        $slugged = strtolower($slug);
         $pattern = "#\W|_#";
 
-        $slugs = preg_split ( $pattern , $slug);
+        $slugs = preg_split ( $pattern , $slugged);
 
         $slug = implode("-", $slugs);
 
@@ -78,8 +78,15 @@ class CityController extends AbstractController
 
         // Si aucune data n'est récupérée
         if (!$city) {
+
+            $city = $this->getDoctrine()
+                ->getRepository(City::class)
+                ->findOneByPostalCode($slug);
+        }
+
+        elseif (!$city) {
             throw $this->createNotFoundException(
-                Response::HTTP_NOT_FOUND
+            Response::HTTP_NOT_FOUND
             );
         }
 
