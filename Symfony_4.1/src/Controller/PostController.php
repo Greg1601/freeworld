@@ -44,6 +44,7 @@ class PostController extends AbstractController
                  'Username' => $post->getAuthor()->getUsername(),
                  'Positive' => $post->getPositiveOpinion(),
                  'Negative' => $post->getNegativeOpinion(),
+                 'Vote' => $post->getVote()
              );
 }
             return $this->json($data);

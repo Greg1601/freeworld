@@ -13,11 +13,11 @@ easy_admin:
       list:
         fields:
         - 'id'
-        - 'username'
+        - { property: 'username', label: "Nom d'utilisateur" }
         - { property: 'role',  type: 'raw' }
-        - 'email'
-        - 'city'
-        - 'description'
+        - { property: 'email', label: "Email" }
+        - { property: 'city', label: "Ville" }
+        - { property: 'description', label: "Description" }
         - { property: 'isactive',  type: 'toggle' }
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
@@ -26,8 +26,17 @@ easy_admin:
         title: 'Add/Edit User'
         form_options: { validation_groups: ['Default'] }
         fields:
-        - 'username'
-        - 'role'
+        - { property: 'username', label: "Nom d'utilisateur" }
+        - { property: 'role',  type: 'raw' }
+      show:
+        fields:
+        - 'id'
+        - { property: 'username', label: "Nom d'utilisateur" }
+        - { property: 'role',  type: 'raw' }
+        - { property: 'email', label: "Email" }
+        - { property: 'city', label: "Ville" }
+        - { property: 'description', label: "Description" }
+        - { property: 'isactive',  type: 'toggle' }
 
 
     Place:
@@ -36,16 +45,16 @@ easy_admin:
       list:
         fields:
         - 'id'
-        - 'name'
-        - 'address'
-        - 'description'
-        - 'image'
-        - 'positiveOpinion'
-        - 'negativeOpinion'
-        - 'city_id.real_name'
-        - 'user_id.username'
-        - 'longitudeDeg'
-        - 'latitudeDeg'
+        - { property: 'name',  label: 'Nom' }
+        - { property: 'address',  label: 'Adresse' }
+        - { property: 'description',  label: 'Description' }
+        - { property: 'image',  label: 'Illustration' }
+        - { property: 'positiveOpinion',  label: 'Réactions positives' }
+        - { property: 'negativeOpinion',  label: 'Réactions négatives' }
+        - { property: 'city_id.real_name',  label: 'Ville' }
+        - { property: 'user_id.username',  label: 'Créateur du lieu' }
+        - { property: 'longitudeDeg',  label: 'Longitude' }
+        - { property: 'latitudeDeg',  label: 'Latitude' }
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
         - { name: 'edit', icon: 'pencil', label: 'Edit' }
@@ -53,14 +62,24 @@ easy_admin:
         title: 'Add/Edit Place'
         form_options: { validation_groups: ['Default'] }
         fields:
-        - 'name'
-        - 'address'
-        - 'description'
-        - 'image'
+        - { property: 'name',  label: 'Nom' }
+        - { property: 'address',  label: 'Adresse' }
+        - { property: 'description',  label: 'Description' }
+        - { property: 'image',  label: 'Illustration' }
 #        - 'city_id'
-        - 'user_id'
-        - 'longitudeDeg'
-        - 'latitudeDeg'
+        - { property: 'user_id',  label: 'Créateur du lieu' }
+        - { property: 'longitudeDeg',  label: 'Longitude' }
+        - { property: 'latitudeDeg',  label: 'Latitude' }
+      show:
+        fields:
+        - { property: 'name',  label: 'Nom' }
+        - { property: 'address',  label: 'Adresse' }
+        - { property: 'description',  label: 'Description' }
+        - { property: 'image',  label: 'Illustration' }
+        - { property: 'city_id.real_name',  label: 'Ville' }
+        - { property: 'user_id',  label: 'Créateur du lieu' }
+        - { property: 'longitudeDeg',  label: 'Longitude' }
+        - { property: 'latitudeDeg',  label: 'Latitude' }
 
 
     City:
@@ -70,11 +89,21 @@ easy_admin:
       list:
         fields:
         - 'id'
-        - 'realName'
-        - 'postalCode'
-        - 'country_id'
-        - 'longitudeDeg'
-        - 'latitudeDeg'
+        - { property: 'realName',  label: 'Nom' }
+        - { property: 'postalCode',  label: 'Code postal' }
+        - { property: 'country_id',  label: 'Pays' }
+        - { property: 'longitudeDeg',  label: 'Longitude' }
+        - { property: 'latitudeDeg',  label: 'Latitude' }
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+      show:
+        fields:
+        - 'id'
+        - { property: 'realName',  label: 'Nom' }
+        - { property: 'postalCode',  label: 'Code postal' }
+        - { property: 'country_id',  label: 'Pays' }
+        - { property: 'longitudeDeg',  label: 'Longitude' }
+        - { property: 'latitudeDeg',  label: 'Latitude' }
 
 
     Event:
@@ -108,11 +137,22 @@ easy_admin:
         - { property: 'place_id', label: "Lieu" }
         - { property: 'user_id', label: "Créateur de l'évènement" }
         - { property: 'types', label: "Types d'évènement" }
+      show:
+        fields:
+        - { property: 'name', label: "Nom de l'évènement" }
+        - { property: 'coordonates', label: "Coordonnées de l'évènement" }
+        - { property: 'description', label: "Description" }
+        - { property: 'begin', label: "date de début" }
+        - { property: 'end', label: "date de fin" }
+        - { property: 'image', label: "Image d'illustration" }
+        - { property: 'place_id', label: "Lieu" }
+        - { property: 'user_id', label: "Créateur de l'évènement" }
+        - { property: 'types', label: "Types d'évènement" }
 
 
     Post:
       class: App\Entity\Post
-      label: Les Posts relatifs aux lieux
+      label: Les commentaires relatifs aux lieux
       list:
         fields:
         - 'id'
@@ -135,21 +175,31 @@ easy_admin:
         - { property: 'title', label: "Titre du commentaire" }
         - { property: 'body', label: "Corps du commentaire" }
         - { property: 'image', label: "Illustration/photo" }
-        - { property: 'released_date', label: "date de création" , type: 'datetime' }
+        - { property: 'released_date', label: "Date de création" , type: 'datetime' }
+        - { property: 'place', label: "Lieu en question" }
+        - { property: 'author', label: "Auteur du commentaire" }
+      show:
+        fields:
+        - { property: 'title', label: "Titre du commentaire" }
+        - { property: 'body', label: "Corps du commentaire" }
+        - { property: 'image', label: "Illustration/photo" }
+        - { property: 'released_date', label: "Date de création" , type: 'datetime' }
+        - { property: 'positive_Opinion', label: "Nb de réactions positives" }
+        - { property: 'negative_Opinion', label: "Nb de réactions négatives" }
         - { property: 'place', label: "Lieu en question" }
         - { property: 'author', label: "Auteur du commentaire" }
 
 
     Comment:
       class: App\Entity\Comment
-      label: Les commentaires relatifs aux posts
+      label: Les réactions aux commentaires
       list:
         fields:
         - 'id'
-        - 'body'
-        - { property: 'releasedDate', label: "date de création" , type: 'datetime' }
-        - 'user_id'
-        - 'post_id'
+        - { property: 'body',  label: 'Commentaire' }
+        - { property: 'releasedDate', label: "Date de création" , type: 'datetime' }
+        - { property: 'user_id',  label: 'Auteur' }
+        - { property: 'post_id',  label: 'En réponse à:' }
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
         - { name: 'edit', icon: 'pencil', label: 'Edit' }
@@ -157,19 +207,28 @@ easy_admin:
         title: 'Add/Edit Comment'
         form_options: { validation_groups: ['Default'] }
         fields:
-        - 'body'
+        - { property: 'body',  label: 'Commentaire' }
+        - { property: 'releasedDate', label: "Date de création" , type: 'datetime' }
+        - { property: 'user_id',  label: 'Auteur' }
+        - { property: 'post_id',  label: 'En réponse à:' }
+      show:
+        fields:
+        - 'id'
+        - 'id'
+        - { property: 'body',  label: 'Commentaire' }
         - { property: 'releasedDate', label: "date de création" , type: 'datetime' }
-        - 'user_id'
-        - 'post_id'
+        - { property: 'user_id',  label: 'Auteur' }
+        - { property: 'post_id',  label: 'En réponse à:' }
 
 
     Role:
       class: App\Entity\Role
+      disabled_actions: ['delete', 'edit', 'show']
       label: liste des rôles des utilisateurs
       list:
         fields:
         - 'id'
-        - 'name'
+        - { property: 'name',  label: 'Role' }
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
         - { name: 'edit', icon: 'pencil', label: 'Edit' }
@@ -177,7 +236,7 @@ easy_admin:
         title: 'Add/Edit Role'
         form_options: { validation_groups: ['Default'] }
         fields:
-        - 'name'
+        - { property: 'name',  label: 'Role' }
 
 
     Accessibility:
@@ -186,7 +245,7 @@ easy_admin:
       list:
         fields:
         - 'id'
-        - 'equipment'
+        - { property: 'equipment',  label: "Type d'équipement" }
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
         - { name: 'edit', icon: 'pencil', label: 'Edit' }
@@ -194,7 +253,11 @@ easy_admin:
         title: 'Add/Edit Access Equipment'
         form_options: { validation_groups: ['Default'] }
         fields:
-        - 'equipment'
+        - { property: 'equipment',  label: "Type d'équipement" }
+      show:
+        fields:
+        - 'id'
+        - { property: 'equipment',  label: "Type d'équipement" }
 
 
 #    PlaceType:
@@ -222,8 +285,8 @@ easy_admin:
       list:
         fields:
         - 'id'
-        - 'name'
-        - 'events'
+        - { property: 'name',  label: 'Type' }
+        - { property: 'events',  label: 'Evènements de ce type' }
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
         - { name: 'edit', icon: 'pencil', label: 'Edit' }
@@ -231,17 +294,22 @@ easy_admin:
         title: 'Add/Edit Type of Event'
         form_options: { validation_groups: ['Default'] }
         fields:
-        - 'name'
-        - 'events'
+        - { property: 'name',  label: 'Type' }
+        - { property: 'events',  label: 'Evènements de ce type' }
+      show:
+        fields:
+        - { property: 'name',  label: 'Type' }
+        - { property: 'events',  label: 'Evènements de ce type' }
 
 
     Country:
       class: App\Entity\Country
+      disabled_actions: ['delete', 'edit', 'show']
       label: Les pays
       list:
         fields:
         - 'id'
-        - 'name'
+        - { property: 'name',  label: 'Pays' }
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
         - { name: 'edit', icon: 'pencil', label: 'Edit' }
@@ -249,7 +317,7 @@ easy_admin:
         title: 'Add/Edit Country'
         form_options: { validation_groups: ['Default'] }
         fields:
-        - 'name'
+        - { property: 'name',  label: 'Pays' }
 
     Messages:
       class: App\Entity\Messages
@@ -258,14 +326,24 @@ easy_admin:
       list:
         fields:
         - 'id'
-        - 'title'
-        - 'message'
-        - 'firstname'
-        - 'lastname'
-        - 'email'
-        - 'phone'
+        - { property: 'title',  label: 'Titre' }
+        - { property: 'message',  label: 'Message' }
+        - { property: 'firstname',  label: "Prénom de l'auteur" }
+        - { property: 'lastname',  label: "Nom de l'auteur" }
+        - { property: 'email',  label: 'Email' }
+        - { property: 'phone',  label: 'Téléphone' }
         - { property: 'is_treated',  type: 'toggle' }
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
         - { name: 'edit', icon: 'pencil', label: 'Edit' }
+      show:
+        fields:
+        - 'id'
+        - { property: 'title',  label: 'Titre' }
+        - { property: 'message',  label: 'Message' }
+        - { property: 'firstname',  label: "Prénom de l'auteur" }
+        - { property: 'lastname',  label: "Nom de l'auteur" }
+        - { property: 'email',  label: 'Email' }
+        - { property: 'phone',  label: 'Téléphone' }
+        - { property: 'is_treated',  type: 'toggle' }
 
