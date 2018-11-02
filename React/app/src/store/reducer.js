@@ -198,6 +198,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         currentPointBdd: action.currentPointBdd,
+        currentPointBddId: action.currentPointBddId,
       };
     case 'CLEAN_CURRENT_POINT':
       return {

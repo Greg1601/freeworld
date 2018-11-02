@@ -229,6 +229,7 @@ const WebSocket = store => next => (action) => {
         .then(response => store.dispatch({
           type: 'STORE_INFO_BDD',
           currentPointBdd: response.data,
+          currentPointBddId: response.data.Id,
         }))
         .catch(error => console.log(error));
       break;
