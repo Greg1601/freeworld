@@ -101,7 +101,7 @@ class UserController extends AbstractController
 //    }
 
 
-    public function register(Request $request, UserPasswordEncoderInterface $encoder)
+    public function register(Request $request, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer)
     {
         $em = $this->getDoctrine()->getManager();
         $data = $request->getContent();
@@ -116,8 +116,31 @@ class UserController extends AbstractController
         $user->setDescription($decoded['description']);
         $user->setCity($this->getDoctrine()->getManager()->getRepository(city::class)->findOneBySlug(strtolower($decoded['city'])));
 
+        // Génération d'une clé aléatoire pour l'activation du compte
+        $user->setRandomKey($cle = md5(microtime(TRUE)*100000));
+
         $em->persist($user);
         $em->flush();
+
+        // Envoi d'un mail automatique avec swiftMailer
+        $message = (new \Swift_Message('Hello Email'))
+            ->setFrom('freeworld.project.2018@gmail.com')
+            ->setTo($decoded['email'])
+            ->setBody(
+                $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                    '/mails/registrationEmail.html.twig',
+                    array('username' => $user->getUsername(),
+                        'id' => $user->getId(),
+                        'key' => $user->getRandomKey()
+                    )
+                ),
+                'text/html'
+            )
+        ;
+
+        $mailer->send($message);
+
         return new Response(sprintf('User %s successfully created', $user->getUsername()));
     }
     public function api()
@@ -125,6 +148,39 @@ class UserController extends AbstractController
         return new Response(sprintf('Logged in as %s', $this->getUser()->getUsername()));
     }
 
+    /**
+     * @Route("/{id}/activation/{key}", name="activate_account")
+     */
+    public function accountActivationAction(Request $request, $id, $key)
+    {
+
+//        $username = $request->request->get('username');
+//        $id = $request->request->get('id');
+//        $key = $request->request->get('key');
+
+        if ($this->getDoctrine()
+                ->getManager()
+                ->getRepository('App:Person')
+                ->findOneById($id)
+            &&
+            $this->getDoctrine()
+                ->getManager()
+                ->getRepository('App:Person')
+                ->findOneById($id)->getRandomKey() == $key
+        )
+        {
+            $user = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('App:Person')
+                ->findOneById($id);
+            $user->setRole(1);
+
+            $this->getDoctrine()->getManager()->persist($user);
+            $this->getDoctrine()->getManager()->flush();
+        }
+
+        return $this->json('Activation OK');
+    }
 
 //    /**
 //     * Lists all person entities by role.

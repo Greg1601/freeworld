@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Messages;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -29,7 +30,31 @@ class QuestionController extends AbstractController
             ->setTo('freeworld.project.2018@gmail.com')
             ->setBody(
                 $this->renderView(
-                    'Emails/question.html.twig',
+                    '/mails/questionEmail.html.twig',
+                    array(
+                        'title' => json_decode($request
+                            ->getContent(), true)['title'],
+                        'lastname' => json_decode($request
+                            ->getContent(), true)['lastname'],
+                        'firstname' => json_decode($request
+                            ->getContent(), true)['firstname'],
+                        'email' => json_decode($request
+                            ->getContent(), true)['email'],
+                        'phone' => json_decode($request
+                            ->getContent(), true)['phone'],
+                        'message' => json_decode($request
+                            ->getContent(), true)['message'])
+                ),
+                'text/html'
+            )
+        ;
+
+        $userMessage = (new \Swift_Message('Question!!'))
+            ->setFrom('freeworld.project.2018@gmail.com')
+            ->setTo(json_decode($request->getContent(), true)['email'])
+            ->setBody(
+                $this->renderView(
+                    '/mails/userQuestionEmail.html.twig',
                     array(
                         'title' => json_decode($request
                             ->getContent(), true)['title'],
@@ -49,17 +74,31 @@ class QuestionController extends AbstractController
         ;
 
         $mailer->send($message);
+        $mailer->send($userMessage);
+
+        // Ajout du message à la base de données
+
+//        // Récupération des données envoyées par le front
+//        $data = $request->getContent();
+//        // Décodage des données
+//        $decoded = json_decode($data, true);
+
+        // Création de la nouvelle entité et ajout des données récupérées puis décodées
+        $newMessage = new Messages();
+        $newMessage->setTitle(json_decode($request->getContent(), true)['title']);
+        $newMessage->setMessage(json_decode($request->getContent(), true)['message']);
+        $newMessage->setFirstname(json_decode($request->getContent(), true)['firstname']);
+        $newMessage->setLastname(json_decode($request->getContent(), true)['lastname']);
+        $newMessage->setEmail(json_decode($request->getContent(), true)['email']);
+        $newMessage->setPhone(json_decode($request->getContent(), true)['phone']);
+
+        $this->getDoctrine()->getManager()->persist($newMessage);
+        $this->getDoctrine()->getManager()->flush();
 
         return $this->json(
             ['Question envoyée' => json_decode($request
                 ->getContent(), true)['title']]
         );
 
-//        $data = $request->getContent();
-//
-//        return $this->json(
-//            ['test' => $data],
-//            Response::HTTP_OK
-//        );
     }
 }

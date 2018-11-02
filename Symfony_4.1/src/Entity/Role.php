@@ -24,7 +24,7 @@ class Role
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Person", mappedBy="role_id")
+     * @ORM\OneToMany(targetEntity="App\Entity\Person", mappedBy="role")
      */
     private $people;
 
@@ -79,5 +79,9 @@ class Role
         }
 
         return $this;
+    }
+
+    public function __toString(){
+        return $this->getName();
     }
 }

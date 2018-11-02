@@ -24,7 +24,7 @@ class Country
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\City", mappedBy="country_id")
+     * @ORM\OneToMany(targetEntity="App\Entity\City", mappedBy="country")
      */
     private $cities;
 
@@ -79,5 +79,9 @@ class Country
         }
 
         return $this;
+    }
+
+    public function __toString(){
+        return $this->getName();
     }
 }

@@ -1,0 +1,252 @@
+easy_admin:
+  formats:
+    datetime: 'd/m/Y h:i A e'
+  site_name: 'Administration Freeworld'
+  design:
+    brand_color: 'orange'
+    form_theme: 'vertical'
+  entities:
+
+    User:
+      class: App\Entity\Person
+      label: Utilisateurs
+      list:
+        fields:
+        - 'id'
+        - 'username'
+        - { property: 'role',  type: 'raw' }
+        - 'email'
+        - 'city'
+        - 'description'
+        - { property: 'isactive',  type: 'toggle' }
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+        - { name: 'edit', icon: 'pencil', label: 'Edit' }
+      form:
+        title: 'Add/Edit User'
+        form_options: { validation_groups: ['Default'] }
+        fields:
+        - 'username'
+        - 'role'
+
+
+    Place:
+      class: App\Entity\Place
+      label: Lieux référencés
+      list:
+        fields:
+        - 'id'
+        - 'name'
+        - 'address'
+        - 'description'
+        - 'image'
+        - 'positiveOpinion'
+        - 'negativeOpinion'
+        - 'city_id.real_name'
+        - 'user_id.username'
+        - 'longitudeDeg'
+        - 'latitudeDeg'
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+        - { name: 'edit', icon: 'pencil', label: 'Edit' }
+      form:
+        title: 'Add/Edit Place'
+        form_options: { validation_groups: ['Default'] }
+        fields:
+        - 'name'
+        - 'address'
+        - 'description'
+        - 'image'
+#        - 'city_id'
+        - 'user_id'
+        - 'longitudeDeg'
+        - 'latitudeDeg'
+
+
+    City:
+      class: App\Entity\City
+      disabled_actions: ['edit', 'delete']
+      label: Villes couvertes
+      list:
+        fields:
+        - 'id'
+        - 'realName'
+        - 'postalCode'
+        - 'country_id'
+        - 'longitudeDeg'
+        - 'latitudeDeg'
+
+
+    Event:
+      class: App\Entity\Event
+      label: Les évènements référencés
+      list:
+        fields:
+        - 'id'
+        - 'name'
+        - 'coordonates'
+        - 'description'
+        - { property: 'begin', label: "date de début" }
+        - { property: 'end', label: "date de fin" }
+        - 'image'
+        - { property: 'place_id.name', label: "Lieu" }
+        - { property: 'user_id', label: "Créateur de l'évènement" }
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+        - { name: 'edit', icon: 'pencil', label: 'Edit' }
+      form:
+        title: 'Add/Edit Event'
+        form_options: { validation_groups: ['Default'] }
+        fields:
+        - 'name'
+        - 'coordonates'
+        - 'description'
+        - { property: 'begin', label: "date de début" }
+        - { property: 'end', label: "date de fin" }
+        - 'image'
+        - { property: 'place_id', label: "Lieu" }
+        - { property: 'user_id', label: "Créateur de l'évènement" }
+
+
+    Post:
+      class: App\Entity\Post
+      label: Les Posts relatifs aux lieux
+      list:
+        fields:
+        - 'id'
+        - 'title'
+        - 'body'
+        - 'image'
+        - 'released_Date'
+        - 'positive_Opinion'
+        - 'negative_Opinion'
+        - 'place_id'
+        - 'author'
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+        - { name: 'edit', icon: 'pencil', label: 'Edit' }
+      form:
+        title: 'Add/Edit Post'
+        form_options: { validation_groups: ['Default'] }
+        fields:
+        - 'title'
+        - 'body'
+        - 'image'
+        - 'releasedDate'
+        - 'positiveOpinion'
+        - 'negativeOpinion'
+        - 'place'
+        - 'user'
+
+
+    Comment:
+      class: App\Entity\Comment
+      label: Les commentaires relatifs aux posts
+      list:
+        fields:
+        - 'id'
+        - 'body'
+        - 'releasedDate'
+        - 'user'
+        - 'post'
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+        - { name: 'edit', icon: 'pencil', label: 'Edit' }
+      form:
+        title: 'Add/Edit Comment'
+        form_options: { validation_groups: ['Default'] }
+        fields:
+        - 'body'
+        - 'releasedDate'
+        - 'user'
+        - 'post'
+
+
+    Role:
+      class: App\Entity\Role
+      label: liste des rôles des utilisateurs
+      list:
+        fields:
+        - 'id'
+        - 'name'
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+        - { name: 'edit', icon: 'pencil', label: 'Edit' }
+      form:
+        title: 'Add/Edit Role'
+        form_options: { validation_groups: ['Default'] }
+        fields:
+        - 'name'
+
+
+    Accessibility:
+      class: App\Entity\Accessibility
+      label: Les équipements d'accèssibilité
+      list:
+        fields:
+        - 'id'
+        - 'equipment'
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+        - { name: 'edit', icon: 'pencil', label: 'Edit' }
+      form:
+        title: 'Add/Edit Access Equipment'
+        form_options: { validation_groups: ['Default'] }
+        fields:
+        - 'equipment'
+
+
+    PlaceType:
+      class: App\Entity\PlaceType
+      label: Associations Lieux - Types de lieu
+      list:
+        fields:
+        - 'id'
+        - 'type'
+        - 'places'
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+        - { name: 'edit', icon: 'pencil', label: 'Edit' }
+      form:
+        title: 'Add/Edit Placetype'
+        form_options: { validation_groups: ['Default'] }
+        fields:
+        - 'type'
+        - 'places'
+
+
+    Type:
+      class: App\Entity\Type
+      label: Les types d'évènements
+      list:
+        fields:
+        - 'id'
+        - 'name'
+        - 'events'
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+        - { name: 'edit', icon: 'pencil', label: 'Edit' }
+      form:
+        title: 'Add/Edit Type of Event'
+        form_options: { validation_groups: ['Default'] }
+        fields:
+        - 'name'
+        - 'events'
+
+
+    Country:
+      class: App\Entity\Country
+      label: Les pays
+      list:
+        fields:
+        - 'id'
+        - 'name'
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+        - { name: 'edit', icon: 'pencil', label: 'Edit' }
+      form:
+        title: 'Add/Edit Country'
+        form_options: { validation_groups: ['Default'] }
+        fields:
+        - 'name'
+

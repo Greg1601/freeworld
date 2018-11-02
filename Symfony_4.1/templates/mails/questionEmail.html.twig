@@ -2,13 +2,12 @@
 
 {% block body %}
 
-    <h3>Création de compte presque terminée</h3>
+    <h3>Nouveau message d'un utilisateur</h3>
 
-    Bonjour {{ username }}! Votre enregistrement sur Freeworld est presque terminée.
-    Merci de cliquer sur le lien ci-dessous afin de confirmer votre adresse mail:
+    <p><b> {{ title }}</b> <i>envoyé par {{ firstname }} {{ lastname }}:</i></p>
+    <p>{{ message }}</p>
+    <p>Pour recontacter l'utilisateur : {{ email }} ou {{ phone }}</p>
 
-    <a href="http://localhost:8000/user/{{ id }}/activation/{{ key }}">Cliquer ici!!</a>.
-
-    Merci!
+    <p>Merci!</p>
 
 {% endblock %}

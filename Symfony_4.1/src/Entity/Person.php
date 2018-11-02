@@ -53,7 +53,7 @@ class Person implements UserInterface
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="people")
      * @ORM\JoinColumn(nullable=false)
      */
     private $role;
@@ -83,12 +83,18 @@ class Person implements UserInterface
      */
     private $posts;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $randomKey;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->places = new ArrayCollection();
         $this->posts = new ArrayCollection();
+//        $this->role = null;
         $this->is_active = 1;
     }
 
@@ -121,12 +127,12 @@ class Person implements UserInterface
         return $this;
     }
 
-    public function getRole(): ?Integer
+    public function getRole(): ?string
     {
         return $this->role;
     }
 
-    public function setRole(Integer $role): self
+    public function setRole(Role $role): self
     {
         $this->role = $role;
 
@@ -180,18 +186,6 @@ class Person implements UserInterface
 
         return $this;
     }
-
-//    public function getRoleId(): ?Role
-//    {
-//        return $this->role;
-//    }
-//
-//    public function setRoleId(?Role $role): self
-//    {
-//        $this->role = $role;
-//
-//        return $this;
-//    }
 
     public function getCity(): ?City
     {
@@ -343,5 +337,21 @@ class Person implements UserInterface
 
     public function eraseCredentials()
     {
+    }
+
+    public function getRandomKey(): ?string
+    {
+        return $this->randomKey;
+    }
+
+    public function setRandomKey(string $randomKey): self
+    {
+        $this->randomKey = $randomKey;
+
+        return $this;
+    }
+
+    public function __toString(){
+        return $this->getUsername();
     }
 }
