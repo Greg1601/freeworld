@@ -15,7 +15,7 @@ import CentresInteret from 'src/components/CentresInteret';
 import Accessibilite from 'src/components/Lieu/Accessibilite';
 import Commentaires from 'src/containers/Commentaires';
 import SignalForm from 'src/components/Lieu/SignalForm';
-import Rating from 'src/containers/Rating';
+import Rating from 'src/components/Lieu/Rating';
 import CategoryName from 'src/utils/categoryName';
 import UploadApi from 'src/containers/UploadApi';
 import Upload from 'src/containers/Upload';
@@ -46,6 +46,8 @@ class Lieu extends React.Component {
       photos,
       currentPointBdd,
       placeId,
+      vote,
+      logged,
     } = this.props;
     const { show } = this.state;
     if (currentPoint) {
@@ -101,7 +103,7 @@ class Lieu extends React.Component {
                 </div>
                 <div className="lieu-info-rate">
                   <h5>Appréciation</h5>
-                  <Rating name={name} />
+                  <Rating vote={vote} />
                 </div>
               </div>
               <div className="infoslieu-minimap">
@@ -121,7 +123,7 @@ class Lieu extends React.Component {
                   <Upload pointId={currentPointBdd.Id} />
                 </div>
                 }
-              <Commentaires placeId={currentPointBdd.Id} />
+              <Commentaires logged={logged} placeId={currentPointBdd.Id} />
             </div>
             <div className="pagelieu-block pagelieu-fix">
               <CentresInteret currentCatId={currentPointBdd.Placetype} />

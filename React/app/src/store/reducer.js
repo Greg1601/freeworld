@@ -84,6 +84,15 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         currentCategoryPoint: action.categoryPoint,
       };
+    case 'GET_VOTES': {
+      const total = action.positive + action.negative;
+      const exactVote = ((action.positive - action.negative) - total) * 100;
+      const vote = Math.round(exactVote);
+      return {
+        ...state,
+        vote,
+      };
+    }
     // case 'SET_VOTE':
     //   return {
     //     ...state,
@@ -194,12 +203,16 @@ const reducer = (state = initialState, action = {}) => {
           lon: action.lon,
         },
       };
-    case 'STORE_INFO_BDD':
+    case 'STORE_INFO_BDD': {
+      const total = action.positive + action.negative;
+      const exactVote = ((action.positive - action.negative) / total) * 100;
+      const vote = Math.round(exactVote);
       return {
         ...state,
         currentPointBdd: action.currentPointBdd,
-        currentPointBddId: action.currentPointBddId,
+        vote,
       };
+    }
     case 'CLEAN_CURRENT_POINT':
       return {
         ...state,

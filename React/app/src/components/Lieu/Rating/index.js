@@ -9,14 +9,14 @@ const styles = theme => ({
   },
 });
 
-const Rating = ({ rate, classes, name }) => {
+const Rating = ({ vote, classes, name }) => {
   return (
     <div className="rating">
       <div className="rating-rate">
-        <CircularProgress className={classes.progress} variant="static" value={rate} name={name}/>
+        <CircularProgress className={classes.progress} variant="static" value={vote} name={name}/>
         <div>
           <h3>
-            {rate}%
+            {vote}%
           </h3>
           <p>
             des utilisateurs recommandent ce lieu.

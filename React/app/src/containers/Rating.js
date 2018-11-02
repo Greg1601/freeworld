@@ -13,7 +13,7 @@ import Rating from 'src/components/Lieu/Rating';
  */
 
 const mapStateToProps = state => ({
-  rate: state.rate,
+  vote: state.vote,
 });
 
 const mapDispatchToProps = dispatch => ({});
