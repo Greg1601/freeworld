@@ -115,7 +115,7 @@ const WebSocket = store => next => (action) => {
       break;
     case 'GET_COMMENT':
       axios.post('http://127.0.0.1:8002/post/list', {
-        placeId: action.id,
+        placeId: `${action.id}`,
       })
         .then(response => store.dispatch({
           type: 'COMMENT',

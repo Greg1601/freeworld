@@ -56,7 +56,7 @@ class Commentaires extends React.Component {
             ))
           }
         </div>
-      )
+      );
     }
     return (
       <div className="commentaires">
@@ -71,12 +71,12 @@ class Commentaires extends React.Component {
           </div>
           :
           <div>
+            <p>Il n'y a pas encore de commentaires pour ce lieu.</p>
             <button onClick={this.showCommentForm} variant="contained">
               Donner son avis
             </button>
           </div>
         }
-        <p>Il n'y a pas encore de commentaires pour ce lieu</p>
       </div>
     )
   }
