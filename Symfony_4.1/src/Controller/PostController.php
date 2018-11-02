@@ -27,26 +27,26 @@ class PostController extends AbstractController
         public function listPostsByPlaceId(Request $request)
         {
 
-            $id = $request->getContent();
-            // $decoded = json_decode($data, true);
+//            $data = $request->getContent();
+//            $decoded = json_decode($data, true);
             //
             $posts = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('App:Post')
-                ->findByPlaceId($id);
+                ->findByPlaceId(json_decode($request->getContent(), true)['placeId']);
 
 
-            // foreach ($posts as $post) {
-            //     $data[] = array(
-            //         'Title' => $post->getTitle(),
-            //         'Body' => $post->getBody(),
-            //         'Release' => $post->getReleasedDate(),
-            //         'Username' => $post->getAuthor()->getUsername(),
-            //         'Positive' => $post->getPositiveOpinion(),
-            //         'Negative' => $post->getNegativeOpinion(),
-            //     );
-            // }
-            return $this->json($posts);
+            foreach ($posts as $post) {
+             $data[] = array(
+                 'Title' => $post->getTitle(),
+                 'Body' => $post->getBody(),
+                 'Release' => $post->getReleasedDate(),
+                 'Username' => $post->getAuthor()->getUsername(),
+                 'Positive' => $post->getPositiveOpinion(),
+                 'Negative' => $post->getNegativeOpinion(),
+             );
+}
+            return $this->json($data);
         }
 
     /**
