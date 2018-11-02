@@ -116,14 +116,15 @@ easy_admin:
       list:
         fields:
         - 'id'
-        - 'title'
-        - 'body'
-        - 'image'
+        - { property: 'title', label: "Titre du commentaire" }
+        - { property: 'body', label: "Corps du commentaire" }
+        - { property: 'vote', label: "Vote de l'auteur", type: 'text'}
+        - { property: 'image', label: "Illustration/photo" }
         - { property: 'released_date', label: "date de création" , type: 'datetime' }
-        - 'positive_Opinion'
-        - 'negative_Opinion'
-        - 'place'
-        - 'author'
+        - { property: 'positive_Opinion', label: "Nb de réactions positives" }
+        - { property: 'negative_Opinion', label: "Nb de réactions négatives" }
+        - { property: 'place', label: "Lieu en question" }
+        - { property: 'author', label: "Auteur du commentaire" }
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
         - { name: 'edit', icon: 'pencil', label: 'Edit' }
@@ -131,12 +132,12 @@ easy_admin:
         title: 'Add/Edit Post'
         form_options: { validation_groups: ['Default'] }
         fields:
-        - 'title'
-        - 'body'
-        - 'image'
+        - { property: 'title', label: "Titre du commentaire" }
+        - { property: 'body', label: "Corps du commentaire" }
+        - { property: 'image', label: "Illustration/photo" }
         - { property: 'released_date', label: "date de création" , type: 'datetime' }
-        - 'place'
-        - 'author'
+        - { property: 'place', label: "Lieu en question" }
+        - { property: 'author', label: "Auteur du commentaire" }
 
 
     Comment:
