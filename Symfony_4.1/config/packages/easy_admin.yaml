@@ -1,6 +1,6 @@
 easy_admin:
   formats:
-    datetime: 'd/m/Y h:i A e'
+    datetime: 'd/m/Y h:i'
   site_name: 'Administration Freeworld'
   design:
     brand_color: 'orange'
@@ -83,14 +83,15 @@ easy_admin:
       list:
         fields:
         - 'id'
-        - 'name'
-        - 'coordonates'
-        - 'description'
+        - { property: 'name', label: "Nom de l'évènement" }
+        - { property: 'coordonates', label: "Coordonnées de l'évènement" }
+        - { property: 'description', label: "Description" }
         - { property: 'begin', label: "date de début" }
         - { property: 'end', label: "date de fin" }
-        - 'image'
+        - { property: 'image', label: "Image d'illustration" }
         - { property: 'place_id.name', label: "Lieu" }
         - { property: 'user_id', label: "Créateur de l'évènement" }
+        - { property: 'types', label: "Types d'évènement" }
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
         - { name: 'edit', icon: 'pencil', label: 'Edit' }
@@ -98,14 +99,15 @@ easy_admin:
         title: 'Add/Edit Event'
         form_options: { validation_groups: ['Default'] }
         fields:
-        - 'name'
-        - 'coordonates'
-        - 'description'
+        - { property: 'name', label: "Nom de l'évènement" }
+        - { property: 'coordonates', label: "Coordonnées de l'évènement" }
+        - { property: 'description', label: "Description" }
         - { property: 'begin', label: "date de début" }
         - { property: 'end', label: "date de fin" }
-        - 'image'
+        - { property: 'image', label: "Image d'illustration" }
         - { property: 'place_id', label: "Lieu" }
         - { property: 'user_id', label: "Créateur de l'évènement" }
+        - { property: 'types', label: "Types d'évènement" }
 
 
     Post:
@@ -117,10 +119,10 @@ easy_admin:
         - 'title'
         - 'body'
         - 'image'
-        - 'released_Date'
+        - { property: 'released_date', label: "date de création" , type: 'datetime' }
         - 'positive_Opinion'
         - 'negative_Opinion'
-        - 'place_id'
+        - 'place'
         - 'author'
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
@@ -132,11 +134,9 @@ easy_admin:
         - 'title'
         - 'body'
         - 'image'
-        - 'releasedDate'
-        - 'positiveOpinion'
-        - 'negativeOpinion'
+        - { property: 'released_date', label: "date de création" , type: 'datetime' }
         - 'place'
-        - 'user'
+        - 'author'
 
 
     Comment:
@@ -146,9 +146,9 @@ easy_admin:
         fields:
         - 'id'
         - 'body'
-        - 'releasedDate'
-        - 'user'
-        - 'post'
+        - { property: 'releasedDate', label: "date de création" , type: 'datetime' }
+        - 'user_id'
+        - 'post_id'
         actions:
         - { name: 'show', icon: 'info-circle', label: 'Show' }
         - { name: 'edit', icon: 'pencil', label: 'Edit' }
@@ -157,9 +157,9 @@ easy_admin:
         form_options: { validation_groups: ['Default'] }
         fields:
         - 'body'
-        - 'releasedDate'
-        - 'user'
-        - 'post'
+        - { property: 'releasedDate', label: "date de création" , type: 'datetime' }
+        - 'user_id'
+        - 'post_id'
 
 
     Role:
@@ -196,23 +196,23 @@ easy_admin:
         - 'equipment'
 
 
-    PlaceType:
-      class: App\Entity\PlaceType
-      label: Associations Lieux - Types de lieu
-      list:
-        fields:
-        - 'id'
-        - 'type'
-        - 'places'
-        actions:
-        - { name: 'show', icon: 'info-circle', label: 'Show' }
-        - { name: 'edit', icon: 'pencil', label: 'Edit' }
-      form:
-        title: 'Add/Edit Placetype'
-        form_options: { validation_groups: ['Default'] }
-        fields:
-        - 'type'
-        - 'places'
+#    PlaceType:
+#      class: App\Entity\PlaceType
+#      label: Associations Lieux - Types de lieu
+#      list:
+#        fields:
+#        - 'id'
+#        - 'type'
+#        - 'places'
+#        actions:
+#        - { name: 'show', icon: 'info-circle', label: 'Show' }
+#        - { name: 'edit', icon: 'pencil', label: 'Edit' }
+#      form:
+#        title: 'Add/Edit Placetype'
+#        form_options: { validation_groups: ['Default'] }
+#        fields:
+#        - 'type'
+#        - 'places'
 
 
     Type:
@@ -249,4 +249,22 @@ easy_admin:
         form_options: { validation_groups: ['Default'] }
         fields:
         - 'name'
+
+    Messages:
+      class: App\Entity\Messages
+      disabled_actions: ['delete']
+      label: messages reçus
+      list:
+        fields:
+        - 'id'
+        - 'title'
+        - 'message'
+        - 'firstname'
+        - 'lastname'
+        - 'email'
+        - 'phone'
+        - { property: 'is_treated',  type: 'toggle' }
+        actions:
+        - { name: 'show', icon: 'info-circle', label: 'Show' }
+        - { name: 'edit', icon: 'pencil', label: 'Edit' }
 
