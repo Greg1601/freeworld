@@ -229,8 +229,12 @@ const WebSocket = store => next => (action) => {
         .then(response => store.dispatch({
           type: 'STORE_INFO_BDD',
           currentPointBdd: response.data,
-          currentPointBddId: response.data.Id,
+          positive: response.data.Positive,
+          negative: response.data.Negative,
         }))
+        // {
+        //   type: 'GET_VOTES',
+        // },
         .catch(error => console.log(error));
       break;
     case 'SEND_IMAGE':

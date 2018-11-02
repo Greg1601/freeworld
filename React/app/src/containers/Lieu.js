@@ -21,6 +21,8 @@ const mapStateToProps = state => ({
   placeId: state.currentPoint,
   currentUser: state.currentUser,
   userId: state.userId,
+  vote: state.vote,
+  logged: state.logged,
 });
 
 // Actions

@@ -2,12 +2,13 @@
  * Npm import
  */
 import React from 'react';
-import Commentaire from 'src/components/Lieu/Commentaire';
-import CommentForm from 'src/containers/CommentForm';
-import Arrow from 'react-icons/lib/fa/arrow-left';
+import { NavLink } from 'react-router-dom';
 /**
  * Local import
  */
+import Commentaire from 'src/components/Lieu/Commentaire';
+import CommentForm from 'src/containers/CommentForm';
+import Arrow from 'react-icons/lib/fa/arrow-left';
 
 
 /**
@@ -41,7 +42,16 @@ class Commentaires extends React.Component {
                 onClick={this.showCommentForm}
                 className="buttonplus-icon"
               />
-              <CommentForm />
+              {this.props.logged ?
+                <CommentForm />
+              :
+                <p>
+                  <NavLink exact to="/Login" className="link">Connectez-vous</NavLink>
+                  ou
+                   <NavLink exact to="Signup" className="link">créez</NavLink> un compte.
+                  pour laisser un commentaire !
+                </p>
+              }
             </div>
             :
             <div>
