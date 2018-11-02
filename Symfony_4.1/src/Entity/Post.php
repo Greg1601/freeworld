@@ -64,6 +64,11 @@ class Post
      */
     private $author;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $vote;
+
     public function __construct()
     {
         $this->released_date = new \DateTime();
@@ -198,6 +203,22 @@ class Post
     public function setAuthor(?Person $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function __toString(){
+        return $this->getTitle();
+    }
+
+    public function getVote(): ?bool
+    {
+        return $this->vote;
+    }
+
+    public function setVote(bool $vote): self
+    {
+        $this->vote = $vote;
 
         return $this;
     }

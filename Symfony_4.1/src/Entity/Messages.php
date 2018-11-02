@@ -46,6 +46,11 @@ class Messages
      */
     private $phone;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_treated;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +124,18 @@ class Messages
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getIsTreated(): ?bool
+    {
+        return $this->is_treated;
+    }
+
+    public function setIsTreated(bool $is_treated): self
+    {
+        $this->is_treated = $is_treated;
 
         return $this;
     }

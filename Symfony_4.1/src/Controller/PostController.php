@@ -77,6 +77,7 @@ class PostController extends AbstractController
 
         // récupération de la valeur 'vote' de l'entité Place visée (0 pour un vote negatif, 1 pour un vote positif)
         $vote = json_decode($request->getContent(), true)['vote'];
+        $post->setVote($vote);
         // Si la valeur de 'vote' est '0', on incrémente 'negative opinion'
         if ($vote > 0){
             $newPositiveOpinion = $targetPlace->getPositiveOpinion() +1;
@@ -101,16 +102,16 @@ class PostController extends AbstractController
     /**
      * Finds and displays a post entity by id.
      *
-     * @Route("/{id}/show", name="post_show")
+     * @Route("/show", name="post_show")
      * @Method("POST")
      */
-    public function showAction(Request $request, $id)
+    public function showAction(Request $request)
     {
 
         $post = $this->getDoctrine()
             ->getManager()
             ->getRepository('App:Post')
-            ->findOneById($id)
+            ->findOneById(json_decode($request->getContent(), true)['placeId'])
         ;
 
 
