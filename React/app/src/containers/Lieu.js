@@ -16,10 +16,10 @@ import Lieu from 'src/components/Lieu';
 const mapStateToProps = state => ({
   currentPoint: state.currentPoint,
   currentPointBdd: state.currentPointBdd,
+  currentPointBddId: state.currentPointBddId,
   photos: state.photos,
   placeId: state.currentPoint,
   currentUser: state.currentUser,
-  comments: state.comments,
   userId: state.userId,
 });
 
@@ -33,12 +33,6 @@ const mapDispatchToProps = dispatch => ({
   getImages: (id) => {
     dispatch({
       type: 'GET_IMAGES',
-      id,
-    });
-  },
-  getComment: (id) => {
-    dispatch({
-      type: 'GET_COMMENT',
       id,
     });
   },

@@ -23,6 +23,7 @@ class CommentForm extends React.Component {
   }
   render() {
     const { placeId } = this.props;
+    console.log(this.props)
     return (
       <div className="commentForm" data={placeId}>
         <form onSubmit={this.handleSubmit} className="commentForm-form">

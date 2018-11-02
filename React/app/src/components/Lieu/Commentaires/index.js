@@ -22,11 +22,42 @@ class Commentaires extends React.Component {
     this.setState({ show: !this.state.show });
   }
   render() {
+    // console.log(typeof this.props.comments)
     const { show } = this.state;
     // const { comments } = this.props;
     // if (!comments) {
     //   this.props.getComments():
     // }
+    if (!this.props.comments) {
+      this.props.getComment(this.props.placeId);
+    }
+    else if (this.props.comments) {
+      return (
+        <div className="commentaires">
+          <h5>Avis</h5>
+          {(show) ?
+            <div className="pagelieu-block-signal-form" >
+              <Arrow
+                onClick={this.showCommentForm}
+                className="buttonplus-icon"
+              />
+              <CommentForm />
+            </div>
+            :
+            <div>
+              <button onClick={this.showCommentForm} variant="contained">
+                Donner son avis
+              </button>
+            </div>
+          }
+          {
+            this.props.comments.map(com => (
+              <Commentaire com={com} />
+            ))
+          }
+        </div>
+      );
+    }
     return (
       <div className="commentaires">
         <h5>Avis</h5>
@@ -40,17 +71,14 @@ class Commentaires extends React.Component {
           </div>
           :
           <div>
+            <p>Il n'y a pas encore de commentaires pour ce lieu.</p>
             <button onClick={this.showCommentForm} variant="contained">
               Donner son avis
             </button>
           </div>
         }
-        {(this.props.comments) ?
-          this.props.comments.map(com => (
-            <Commentaire com={com} />
-          )) : ''}
       </div>
-    );
+    )
   }
 }
 

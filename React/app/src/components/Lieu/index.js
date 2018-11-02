@@ -13,7 +13,7 @@ import CarousselImage from 'src/components/Lieu/CarousselImage';
 import Minimap from 'src/components/Recherche/Minimap';
 import CentresInteret from 'src/components/CentresInteret';
 import Accessibilite from 'src/components/Lieu/Accessibilite';
-import Commentaires from 'src/components/Lieu/Commentaires';
+import Commentaires from 'src/containers/Commentaires';
 import SignalForm from 'src/components/Lieu/SignalForm';
 import Rating from 'src/containers/Rating';
 import CategoryName from 'src/utils/categoryName';
@@ -29,8 +29,8 @@ class Lieu extends React.Component {
   };
 
   componentDidMount() {
+    // this.props.getComment(this.props.currentPointBdd.Id)
     window.scrollTo(0, 0);
-    this.props.getComment(this.props.placeId);
   }
   componentWillUnmount() {
     this.props.cleanCurrentPoint();
@@ -40,7 +40,6 @@ class Lieu extends React.Component {
     this.setState({ show: !this.state.show });
   }
   render() {
-    console.log(this.props.infos)
     const {
       name,
       currentPoint,
@@ -122,7 +121,7 @@ class Lieu extends React.Component {
                   <Upload pointId={currentPointBdd.Id} />
                 </div>
                 }
-              <Commentaires comment={this.props.comments} />
+              <Commentaires placeId={currentPointBdd.Id} />
             </div>
             <div className="pagelieu-block pagelieu-fix">
               <CentresInteret currentCatId={currentPointBdd.Placetype} />

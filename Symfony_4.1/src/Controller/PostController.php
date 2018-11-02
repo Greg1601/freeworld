@@ -19,35 +19,35 @@ use Symfony\Component\HttpFoundation\Response;
 class PostController extends AbstractController
 {
     /**
-     * Lists all post entities by place Id.
-     *
-     * @Route("/list", name="post_index")
-     * @Method({"POST"})
-     */
-    public function listPostsByPlaceId(Request $request)
-    {
+         * Lists all post entities by place Id.
+         *
+         * @Route("/list", name="post_index")
+         * @Method({"POST"})
+         */
+        public function listPostsByPlaceId(Request $request)
+        {
 
-        $data = $request->getContent();
-        $decoded = json_decode($data, true);
+            $id = $request->getContent();
+            // $decoded = json_decode($data, true);
+            //
+            $posts = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('App:Post')
+                ->findByPlaceId($id);
 
-        $posts = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('App:Post')
-            ->findByPlace($decoded['placeId']);
 
-
-        foreach ($posts as $post) {
-            $data[] = array(
-                'Title' => $post->getTitle(),
-                'Body' => $post->getBody(),
-                'Release' => $post->getReleasedDate(),
-                'Username' => $post->getAuthor()->getUsername(),
-                'Positive' => $post->getPositiveOpinion(),
-                'Negative' => $post->getNegativeOpinion(),
-            );
+            // foreach ($posts as $post) {
+            //     $data[] = array(
+            //         'Title' => $post->getTitle(),
+            //         'Body' => $post->getBody(),
+            //         'Release' => $post->getReleasedDate(),
+            //         'Username' => $post->getAuthor()->getUsername(),
+            //         'Positive' => $post->getPositiveOpinion(),
+            //         'Negative' => $post->getNegativeOpinion(),
+            //     );
+            // }
+            return $this->json($posts);
         }
-        return $this->json($data);
-    }
 
     /**
      * Adds a post entity.
