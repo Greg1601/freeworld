@@ -100,6 +100,9 @@
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/sensiolabs/security-checker" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/Symfony_4.1/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/Symfony_4.1/vendor/twig/extensions" />
+      <path value="$PROJECT_DIR$/Symfony_4.1/vendor/easycorp/easyadmin-bundle" />
+      <path value="$PROJECT_DIR$/Symfony_4.1/vendor/pagerfanta/pagerfanta" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
