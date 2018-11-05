@@ -172,7 +172,7 @@ class PlaceController extends AbstractController
         ;
 //        dump($place);die;
 
-        // Récupération du nom du ou des objets de classe Skill relatif(s) à l'objet $opportunity dans un tableau pour affichage
+        // Récupération du nom du ou des objets de classe Accessibility relatif(s) à l'objet $place dans un tableau pour affichage
         foreach ($place->getAccessibilities() as $accesses){
             $access[] = $accesses->getEquipment();
         }
