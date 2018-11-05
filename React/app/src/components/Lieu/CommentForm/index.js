@@ -7,19 +7,35 @@ import TextArea from 'src/containers/TextArea';
 import FieldInput from 'src/containers/FieldInput';
 
 class CommentForm extends React.Component {
+  static defaultProps = {
+    comment: '',
+    titlecomment: '',
+    clicked: false,
+  }
+  static propTypes = {
+    comment: PropTypes.string,
+    titlecomment: PropTypes.string,
+    clicked: PropTypes.bool,
+  }
   state = {
   }
   Up = () => {
-    this.setState({ vote: 1, opinion: 'oui', clicked: true });
+    this.setState({ vote: 1, clicked: true });
   }
   Down = () => {
-    this.setState({ vote: 0, opinion: 'non', clicked: true });
+    this.setState({ vote: 0, clicked: true });
   }
   handleSubmit = (evt) => {
     evt.preventDefault();
     const { comment, titlecomment, userId, placeId } = this.props;
     const { vote } = this.state;
-    this.props.sendComment(comment, titlecomment, userId, placeId, vote);
+    if (titlecomment === '' || comment === '' || this.state.clicked === false) {
+      this.setState({ error: true });
+    } this.setState({ error: false });
+
+    if (!this.state.error) {
+      this.props.sendComment(comment, titlecomment, userId, placeId, vote);
+    }
   }
   render() {
     const { placeId } = this.props;
@@ -50,6 +66,12 @@ class CommentForm extends React.Component {
             Envoyer
           </button>
         </form>
+        {
+          this.state.error ?
+            <p style={{ color: 'red' }}>Veuillez remplir tous les champs !</p>
+        :
+          null
+        }
       </div>
     );
   }
@@ -58,5 +80,6 @@ class CommentForm extends React.Component {
 CommentForm.propTypes = {
   sendComment: PropTypes.func.isRequired,
 };
+
 
 export default CommentForm;

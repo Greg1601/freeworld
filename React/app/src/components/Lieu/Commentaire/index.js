@@ -17,7 +17,7 @@ import QuoteRight from 'react-icons/lib/fa/quote-right';
 const Commentaire = ({ com }) => (
   <div className="commentaire">
     <div className="commentaire-profil">
-      {/* <span>Satisfation</span> */}
+      <span>Satisfait ? {com.Vote ? 'Oui' : 'Non'}</span>
       <h6>{com.Username}</h6>
       <p>{com.Release}</p>
       <div className="barre" />

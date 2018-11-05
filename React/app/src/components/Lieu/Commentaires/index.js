@@ -23,16 +23,12 @@ class Commentaires extends React.Component {
     this.setState({ show: !this.state.show });
   }
   render() {
-    // console.log(typeof this.props.comments)
     const { show } = this.state;
-    // const { comments } = this.props;
-    // if (!comments) {
-    //   this.props.getComments():
-    // }
     if (!this.props.comments) {
       this.props.getComment(this.props.placeId);
     }
     else if (this.props.comments) {
+      const didPost = this.props.comments.some(com => com.Username === this.props.currentUser)
       return (
         <div className="commentaires">
           <h5>Avis</h5>
@@ -42,22 +38,26 @@ class Commentaires extends React.Component {
                 onClick={this.showCommentForm}
                 className="buttonplus-icon"
               />
-              {this.props.logged ?
+              {this.props.currentUser ?
                 <CommentForm />
               :
                 <p>
                   <NavLink exact to="/Login" className="link">Connectez-vous</NavLink>
-                  ou
-                   <NavLink exact to="Signup" className="link">créez</NavLink> un compte.
-                  pour laisser un commentaire !
+                   ou
+                   <NavLink exact to="Signup" className="link">créez un compte</NavLink>
+                    pour laisser un commentaire !
                 </p>
               }
             </div>
             :
             <div>
-              <button onClick={this.showCommentForm} variant="contained">
-                Donner son avis
-              </button>
+              {didPost ?
+                <p>Vous avez déjà donné votre avis</p>
+              :
+                <button onClick={this.showCommentForm} variant="contained">
+                  Donner son avis
+                </button>
+              }
             </div>
           }
           {

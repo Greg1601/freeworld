@@ -55,7 +55,7 @@ class Upload extends React.Component {
           {uploadedFileCloudinaryUrl === '' ? null :
           <div>
             <p>{uploadedFile.name}</p>
-            <img src={uploadedFileCloudinaryUrl} alt="uploadedFile" />
+            <img className="upload-image" src={uploadedFileCloudinaryUrl} alt="uploadedFile" />
           </div>}
         </div>
       </div>

@@ -231,7 +231,8 @@ const WebSocket = store => next => (action) => {
           currentPointBdd: response.data,
           positive: response.data.Positive,
           negative: response.data.Negative,
-        }))
+        },
+))
         // {
         //   type: 'GET_VOTES',
         // },

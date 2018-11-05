@@ -47,7 +47,7 @@ class Lieu extends React.Component {
       currentPointBdd,
       placeId,
       vote,
-      logged,
+      currentUser,
     } = this.props;
     const { show } = this.state;
     if (currentPoint) {
@@ -123,7 +123,7 @@ class Lieu extends React.Component {
                   <Upload pointId={currentPointBdd.Id} />
                 </div>
                 }
-              <Commentaires logged={logged} placeId={currentPointBdd.Id} />
+              <Commentaires currentUser={currentUser} placeId={currentPointBdd.Id} />
             </div>
             <div className="pagelieu-block pagelieu-fix">
               <CentresInteret currentCatId={currentPointBdd.Placetype} />
