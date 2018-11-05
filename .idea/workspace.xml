@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20aea15b-2694-46f9-a72e-219b9ef3188e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/React/app/src/components/Lieu/Commentaire/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/React/app/src/components/Lieu/Commentaire/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/React/app/src/components/Lieu/Commentaires/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/React/app/src/components/Lieu/Commentaires/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/React/app/src/components/Lieu/Rating/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/React/app/src/components/Lieu/Rating/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/React/app/src/components/Lieu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/React/app/src/components/Lieu/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/React/app/src/containers/Lieu.js" beforeDir="false" afterPath="$PROJECT_DIR$/React/app/src/containers/Lieu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/React/app/src/containers/Rating.js" beforeDir="false" afterPath="$PROJECT_DIR$/React/app/src/containers/Rating.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/React/app/src/store/middlewares/midOne.js" beforeDir="false" afterPath="$PROJECT_DIR$/React/app/src/store/middlewares/midOne.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/React/app/src/store/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/React/app/src/store/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Symfony_4.1/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Symfony_4.1/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Symfony_4.1/src/Controller/PlaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Symfony_4.1/src/Controller/PlaceController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,14 +18,16 @@
     <session id="1344195503">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.103" value="1" />
           <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.48" value="1" />
+          <entry key="project.open.time.57" value="1" />
           <entry key="project.open.time.59" value="1" />
           <entry key="project.open.time.65" value="1" />
+          <entry key="project.open.time.70" value="1" />
           <entry key="project.open.time.71" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -47,7 +42,7 @@
           <entry key="log" value="6" />
           <entry key="pem" value="2" />
           <entry key="pem-back" value="1" />
-          <entry key="php" value="66" />
+          <entry key="php" value="68" />
           <entry key="twig" value="6" />
           <entry key="yaml" value="34" />
         </counts>
@@ -58,7 +53,7 @@
           <entry key="JSON" value="7" />
           <entry key="JavaScript" value="24" />
           <entry key="Log" value="6" />
-          <entry key="PHP" value="67" />
+          <entry key="PHP" value="69" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="Twig" value="6" />
           <entry key="YAML" value="34" />
@@ -66,7 +61,7 @@
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="5" />
+          <entry key="ESLintLanguageService" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.rename.constructor" />
@@ -79,7 +74,7 @@
           <entry key="js" value="991" />
           <entry key="json" value="6" />
           <entry key="log" value="3" />
-          <entry key="php" value="2180" />
+          <entry key="php" value="2516" />
           <entry key="twig" value="395" />
           <entry key="yaml" value="2299" />
         </counts>
@@ -90,7 +85,7 @@
           <entry key="JSON" value="6" />
           <entry key="JavaScript" value="991" />
           <entry key="Log" value="3" />
-          <entry key="PHP" value="2180" />
+          <entry key="PHP" value="2516" />
           <entry key="Twig" value="395" />
           <entry key="YAML" value="2299" />
         </counts>
@@ -104,7 +99,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Entity/Post.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
+            <state relative-caret-position="4862">
               <caret line="223" column="5" selection-start-line="223" selection-start-column="5" selection-end-line="223" selection-end-column="5" />
             </state>
           </provider>
@@ -113,8 +108,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Controller/PostController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+            <state relative-caret-position="752">
+              <caret line="134" column="54" selection-start-line="134" selection-start-column="54" selection-end-line="134" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Controller/PlaceController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-220">
+              <caret line="58" column="50" lean-forward="true" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Entity/Accessibility.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="55" column="37" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -122,29 +135,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Symfony_4.1/var/log/dev.log">
           <provider selected="true" editor-type-id="LogFileEditorProvider">
-            <state relative-caret-position="318">
-              <caret line="9312" column="38" selection-start-line="9312" selection-start-column="38" selection-end-line="9312" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Symfony_4.1/config/packages/easy_admin.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="348" lean-forward="true" selection-start-line="348" selection-end-line="348" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/React/app/src/store/middlewares/midOne.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3030">
-              <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-85">
+              <caret line="10715" column="59" selection-start-line="10715" selection-start-column="59" selection-end-line="10715" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -152,8 +144,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Entity/Place.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="342" column="5" selection-start-line="342" selection-start-column="5" selection-end-line="342" selection-end-column="5" />
+            <state relative-caret-position="153">
+              <caret line="303" column="52" selection-start-line="303" selection-start-column="52" selection-end-line="303" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/React/app/src/store/middlewares/midOne.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-119">
+              <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -171,6 +175,7 @@
       <find>8002</find>
       <find>postal</find>
       <find>design</find>
+      <find>post/ne</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -201,8 +206,6 @@
         <option value="$PROJECT_DIR$/Symfony_4.1/src/Entity/Role.php" />
         <option value="$PROJECT_DIR$/Symfony_4.1/src/Entity/Person.php" />
         <option value="$PROJECT_DIR$/Symfony_4.1/src/Entity/Country.php" />
-        <option value="$PROJECT_DIR$/Symfony_4.1/src/Entity/Place.php" />
-        <option value="$PROJECT_DIR$/Symfony_4.1/src/Controller/PlaceController.php" />
         <option value="$PROJECT_DIR$/Symfony_4.1/src/Entity/City.php" />
         <option value="$PROJECT_DIR$/Symfony_4.1/src/Controller/CityController.php" />
         <option value="$PROJECT_DIR$/Symfony_4.1/src/Entity/Post.php" />
@@ -213,6 +216,8 @@
         <option value="$PROJECT_DIR$/Symfony_4.1/src/Controller/PostController.php" />
         <option value="$PROJECT_DIR$/Symfony_4.1/config/packages/easy_admin.yaml" />
         <option value="$PROJECT_DIR$/React/app/src/store/middlewares/midOne.js" />
+        <option value="$PROJECT_DIR$/Symfony_4.1/src/Entity/Place.php" />
+        <option value="$PROJECT_DIR$/Symfony_4.1/src/Controller/PlaceController.php" />
       </list>
     </option>
   </component>
@@ -339,17 +344,15 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="55" />
-    <option name="y" value="-2" />
-    <option name="width" value="762" />
-    <option name="height" value="789" />
+    <option name="x" value="164" />
+    <option name="width" value="1855" />
+    <option name="height" value="879" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -360,42 +363,33 @@
             <path>
               <item name="freeworld" type="b2602c69:ProjectViewProjectNode" />
               <item name="freeworld" type="462c0819:PsiDirectoryNode" />
-              <item name="React" type="462c0819:PsiDirectoryNode" />
+              <item name="Symfony_4.1" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="freeworld" type="b2602c69:ProjectViewProjectNode" />
               <item name="freeworld" type="462c0819:PsiDirectoryNode" />
-              <item name="React" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="freeworld" type="b2602c69:ProjectViewProjectNode" />
-              <item name="freeworld" type="462c0819:PsiDirectoryNode" />
-              <item name="React" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Symfony_4.1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="freeworld" type="b2602c69:ProjectViewProjectNode" />
               <item name="freeworld" type="462c0819:PsiDirectoryNode" />
-              <item name="React" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Symfony_4.1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="freeworld" type="b2602c69:ProjectViewProjectNode" />
               <item name="freeworld" type="462c0819:PsiDirectoryNode" />
-              <item name="React" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Symfony_4.1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-              <item name="middlewares" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -439,18 +433,20 @@
       <workItem from="1540886834800" duration="9348000" />
       <workItem from="1540902413893" duration="13218000" />
       <workItem from="1540980604096" duration="15975000" />
-      <workItem from="1541146667495" duration="21366000" />
+      <workItem from="1541146667495" duration="22239000" />
+      <workItem from="1541189980622" duration="166000" />
+      <workItem from="1541406152266" duration="4507000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90323000" />
+    <option name="totallyTimeSpent" value="95869000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-2" width="1865" height="1082" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15393074" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15722924" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -463,7 +459,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.31512606" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.34558824" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -646,9 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
           <caret line="124" column="44" selection-start-line="124" selection-start-column="44" selection-end-line="124" selection-end-column="44" />
-          <folding>
-            <element signature="e#34#56#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -682,9 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-          <folding>
-            <element signature="e#34#58#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -712,16 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Controller/PlaceController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#34#63#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Controller/CityController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1232">
@@ -743,23 +723,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Entity/Accessibility.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="81" column="36" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Entity/Messages.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-330" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Entity/Place.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="342" column="5" selection-start-line="342" selection-start-column="5" selection-end-line="342" selection-end-column="5" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Entity/Comment.php">
@@ -783,41 +749,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Symfony_4.1/var/log/dev.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="318">
-          <caret line="9312" column="38" selection-start-line="9312" selection-start-column="38" selection-end-line="9312" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Controller/PostController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Entity/Post.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
+        <state relative-caret-position="4862">
           <caret line="223" column="5" selection-start-line="223" selection-start-column="5" selection-end-line="223" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Symfony_4.1/config/packages/easy_admin.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="348" lean-forward="true" selection-start-line="348" selection-end-line="348" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/React/app/src/store/middlewares/midOne.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3030">
-          <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
+        <state relative-caret-position="-119">
+          <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Controller/PostController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="752">
+          <caret line="134" column="54" selection-start-line="134" selection-start-column="54" selection-end-line="134" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Symfony_4.1/config/packages/easy_admin.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Entity/Accessibility.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="55" column="37" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Entity/Place.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="303" column="52" selection-start-line="303" selection-start-column="52" selection-end-line="303" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Symfony_4.1/var/log/dev.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state relative-caret-position="-85">
+          <caret line="10715" column="59" selection-start-line="10715" selection-start-column="59" selection-end-line="10715" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Symfony_4.1/src/Controller/PlaceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-220">
+          <caret line="58" column="50" lean-forward="true" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
         </state>
       </provider>
     </entry>
