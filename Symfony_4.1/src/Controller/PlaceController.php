@@ -167,9 +167,15 @@ class PlaceController extends AbstractController
             ->getManager()
             ->getRepository('App:Place')
             ->findOneById(
-                json_decode($request->getContent(), true)['id']
+                json_decode($request->request->get('id'), true)
             )
         ;
+//        dump($place);die;
+
+        // Récupération du nom du ou des objets de classe Skill relatif(s) à l'objet $opportunity dans un tableau pour affichage
+        foreach ($place->getAccessibilities() as $accesses){
+            $access[] = $accesses->getEquipment();
+        }
 
         // renvoi des données récupérées en BDD
         return $this->json(
@@ -185,6 +191,7 @@ class PlaceController extends AbstractController
                     ->findOneById($place->getCityId())
                     ->getRealName(),
                 'Image' => $place->getImage(),
+                'Access' => $access,
                 'Positive' => $place->getPositiveOpinion(),
                 'Negative' => $place->getNegativeOpinion(),
                 'Latitude' => $place->getLatitudeDeg(),
