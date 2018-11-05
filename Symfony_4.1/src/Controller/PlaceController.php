@@ -167,7 +167,7 @@ class PlaceController extends AbstractController
             ->getManager()
             ->getRepository('App:Place')
             ->findOneById(
-                json_decode($request->request->get('id'), true)
+                json_decode($request->getContent(), true)['id']
             )
         ;
 //        dump($place);die;
