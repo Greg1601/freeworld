@@ -18,7 +18,7 @@ const WebSocket = store => next => (action) => {
     case 'GOOGLE_GEOCODE':
       axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${action.address},&key=${googleKey}`)
         .then(response =>
-          axios.post('http://127.0.0.1:8002/place/new', {
+          axios.post('http://127.0.0.1:8000/place/new', {
             placename: action.placename,
             placecity: action.placecity,
             placeaddress: action.placeaddress,
@@ -40,7 +40,7 @@ const WebSocket = store => next => (action) => {
             .catch(error => console.log(error)));
       break;
     // case 'LOGIN_REQUEST':
-    //   axios.post('http://127.0.0.1:8002/api/login_check', {
+    //   axios.post('http://127.0.0.1:8000/api/login_check', {
     //     email: action.email,
     //     password: action.password,
     //   })
@@ -49,7 +49,7 @@ const WebSocket = store => next => (action) => {
     //         type: 'T',
     //         token: response.data.token,
     //       },
-    //       axios.post('http://127.0.0.1:8002/getLogs', {
+    //       axios.post('http://127.0.0.1:8000/getLogs', {
     //         token: response.data.token,
     //       })
     //         .then(response => store.dispatch({
@@ -64,7 +64,7 @@ const WebSocket = store => next => (action) => {
     //       ));
     //   break;
     case 'LOGIN_REQUEST':
-      axios.post('http://127.0.0.1:8002/api/login_check', {
+      axios.post('http://127.0.0.1:8000/api/login_check', {
         email: action.email,
         password: action.password,
       })
@@ -73,7 +73,7 @@ const WebSocket = store => next => (action) => {
             type: 'TOKEN',
             token: response.data.token,
           },
-          axios.post('http://127.0.0.1:8002/user/getLogs', {
+          axios.post('http://127.0.0.1:8000/user/getLogs', {
             token: response.data.token,
             email: action.email,
           })
@@ -89,7 +89,7 @@ const WebSocket = store => next => (action) => {
           ));
       break;
     case 'SIGNUP_REQUEST':
-      axios.post('http://127.0.0.1:8002/register', {
+      axios.post('http://127.0.0.1:8000/register', {
         username: action.username,
         password: action.password,
         email: action.email,
@@ -103,7 +103,7 @@ const WebSocket = store => next => (action) => {
         .catch(error => console.log(error));
       break;
     case 'SEND_COMMENT':
-      axios.post('http://127.0.0.1:8002/post/new', {
+      axios.post('http://127.0.0.1:8000/post/new', {
         comment: action.comment,
         titlecomment: action.titlecomment,
         userId: action.userId,
@@ -114,7 +114,7 @@ const WebSocket = store => next => (action) => {
         .catch(error => console.log(error));
       break;
     case 'GET_COMMENT':
-      axios.post('http://127.0.0.1:8002/post/list', {
+      axios.post('http://127.0.0.1:8000/post/list', {
         placeId: action.id,
       })
         .then(response => store.dispatch({
@@ -130,7 +130,7 @@ const WebSocket = store => next => (action) => {
       break;
 
     case 'GET_POINT_BDD':
-      axios.post('http://127.0.0.1:8002/place/list')
+      axios.post('http://127.0.0.1:8000/place/list')
         .then(response => store.dispatch({
           type: 'POINT_BDD',
           nodesBdd: response.data,
@@ -161,7 +161,7 @@ const WebSocket = store => next => (action) => {
       break;
 
     case 'SEND_SEARCH':
-      axios.post(`http://127.0.0.1:8002/city/search/${action.value}`)
+      axios.post(`http://127.0.0.1:8000/city/search/${action.value}`)
         .then(response => store.dispatch({
           type: 'SEARCH_RESULT',
           lat: response.data.latitudeDeg,
@@ -172,7 +172,7 @@ const WebSocket = store => next => (action) => {
       break;
 
     case 'GET_USER_INFO':
-      axios.post('http://127.0.0.1:8002/user/show', {
+      axios.post('http://127.0.0.1:8000/user/show', {
         userId: action.userId,
         token: action.token,
       })
@@ -201,7 +201,7 @@ const WebSocket = store => next => (action) => {
         .catch(error => console.log(error));
       break;
     case 'SEND_FOOTER':
-      axios.post('http://127.0.0.1:8002/question/new', {
+      axios.post('http://127.0.0.1:8000/question/new', {
         title: action.footer.title,
         lastname: action.footer.lastName,
         firstname: action.footer.firstName,
@@ -223,7 +223,7 @@ const WebSocket = store => next => (action) => {
         .catch(error => console.log(error));
       break;
     case 'GET_INFO_BDD':
-      axios.post('http://127.0.0.1:8002/place/show', {
+      axios.post('http://127.0.0.1:8000/place/show', {
         id: action.id,
       })
         .then(response => store.dispatch({
@@ -239,7 +239,7 @@ const WebSocket = store => next => (action) => {
         .catch(error => console.log(error));
       break;
     case 'SEND_IMAGE':
-      axios.post('http://127.0.0.1:8002/user/upload', {
+      axios.post('http://127.0.0.1:8000/user/upload', {
         image: action.imageUrl,
         id: action.id,
       })
@@ -250,7 +250,7 @@ const WebSocket = store => next => (action) => {
         .catch(error => console.log(error));
       break;
     case 'SEND_IMAGE_LIEU':
-      axios.post('http://127.0.0.1:8002/place/upload', {
+      axios.post('http://127.0.0.1:8000/place/upload', {
         image: action.image,
         id: action.id,
       })

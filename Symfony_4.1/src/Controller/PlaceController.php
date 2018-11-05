@@ -40,6 +40,17 @@ class PlaceController extends AbstractController
 
         if ($places) {
             foreach ($places as $place) {
+
+                // test sur les accessibilités, si un ou plusieurs équipement d'accès sont enregistrés dans la bdd on renvoie true, sinon false.
+                if ($place->getAccessibilities())
+                {
+                    $access = true;
+                }
+                else {
+                    $access = false;
+                };
+
+                // on prépare les données à renvoyer
                 $data[] = array(
                     'Id' => $place->getId(),
                     'Name' => $place->getName(),
@@ -50,7 +61,7 @@ class PlaceController extends AbstractController
                     'Negative' => $place->getNegativeOpinion(),
                     'Longitude' => $place->getLongitudeDeg(),
                     'Latitude' => $place->getLatitudeDeg(),
-//                    'Access' => $place->getAccessibilities(),
+                    'Access' => $access,
                     'Placetype' => $place->getType(),
                 );
             }

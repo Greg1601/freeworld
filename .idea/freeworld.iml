@@ -22,6 +22,7 @@
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/doctrine/persistence" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/doctrine/reflection" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/easycorp/easy-log-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/easycorp/easyadmin-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/fig/link-util" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/jdorn/sql-formatter" />
@@ -33,6 +34,7 @@
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/ocramius/package-versions" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/ocramius/proxy-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/pagerfanta/pagerfanta" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/phpdocumentor/type-resolver" />
@@ -98,6 +100,7 @@
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/symfony/web-profiler-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/symfony/web-server-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/twig/extensions" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/Symfony_4.1/vendor/zendframework/zend-code" />
