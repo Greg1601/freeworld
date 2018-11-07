@@ -171,6 +171,12 @@ class PlaceController extends AbstractController
                 json_decode($request->getContent(), true)['id']
             )
         ;
+//        dump($place);die;
+
+        // Récupération du nom du ou des objets de classe Accessibility relatif(s) à l'objet $place dans un tableau pour affichage
+        foreach ($place->getAccessibilities() as $accesses){
+            $access[] = $accesses->getEquipment();
+        }
 
         $serialized = $serializer->serialize(
             $place->getAccessibilities(), 'array');
@@ -190,7 +196,11 @@ class PlaceController extends AbstractController
                     ->findOneById($place->getCityId())
                     ->getRealName(),
                 'Image' => $place->getImage(),
+<<<<<<< HEAD
                 'Access' => $serialized,
+=======
+                'Access' => $access,
+>>>>>>> c0878abf9b2f30d8b8345141fd3a7aa256c0de09
                 'Positive' => $place->getPositiveOpinion(),
                 'Negative' => $place->getNegativeOpinion(),
                 'Latitude' => $place->getLatitudeDeg(),
