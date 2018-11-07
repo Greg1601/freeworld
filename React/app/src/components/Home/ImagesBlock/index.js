@@ -83,8 +83,6 @@ class ImagesBlock extends React.Component {
   render() {
     const { classes, city } = this.props;
 
-    console.log(this.props.categories)
-
     return (
       <div className="ImagesBlock">
         <div className={classes.block}>

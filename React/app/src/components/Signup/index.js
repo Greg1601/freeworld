@@ -8,6 +8,21 @@ import SubmitButton from 'src/components/Form/SubmitButton';
 import { Redirect } from 'react-router-dom';
 
 class Signup extends React.Component {
+
+  static propTypes = {
+    email: PropTypes.string,
+    password: PropTypes.string,
+    username: PropTypes.string,
+    city: PropTypes.string,
+    description: PropTypes.string,
+  }
+  static defaultProps = {
+    email: '',
+    password: '',
+    username: '',
+    city: '',
+    description: '',
+  }
   componentDidMount() {
     window.scrollTo(0, 0);
   }

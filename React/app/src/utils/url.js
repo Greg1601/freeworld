@@ -1,10 +1,16 @@
 import slugify from 'slugify';
 
-export const recipeSlug = (placeName) => {
-  return slugify(placeName, { lower: true });
+export const placeSlug = (placeName) => {
+  if (typeof placeName !== 'string') {
+    return 'inconnu';
+  }
+  return slugify(placeName, {
+    lower: true,
+    separator: '_',
+  });
 };
 
 // Implémentation impérative de l'utilitaire.
-export const recipeUrl = (placeName) => {
-  return `/recipe/${recipeSlug(placeName)}`;
+export const placeUrl = (placeId, placeName) => {
+  return `/Lieu/${placeId}/${placeSlug(placeName)}`;
 };

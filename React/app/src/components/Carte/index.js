@@ -12,6 +12,9 @@ import purple from '@material-ui/core/colors/purple';
 import myIcon from 'src/utils/icon';
 import { NavLink } from 'react-router-dom';
 import CategoryName from 'src/utils/categoryName';
+import {placeUrl} from 'src/utils/url'
+
+// essai route to={placeUrl(point.Id, point.Name)}
 
 const styles = theme => ({
   progress: {
@@ -87,6 +90,7 @@ class Carte extends Component {
     this.props.filterPoints(event.target.value);
   };
   render() {
+
     const {
       classes,
       contained,
@@ -165,7 +169,7 @@ class Carte extends Component {
                       <h1><span>Nom : </span>{point.name || 'Non communiqué'}</h1>
                       <p><span>Tel : </span>{point.phone || 'Non communiqué'}</p>
                       <p><span>Accessibilité</span> : {(point.wheelchair) ? 'Oui' : 'Non'}</p>
-                      <NavLink exact to="/Lieu">
+                      <NavLink exact to={placeUrl(point.id, point.name)}>
                         <Button
                           variant={contained}
                           className="pagelieu-button"
@@ -190,7 +194,7 @@ class Carte extends Component {
                       <h1><span>Nom : </span>{point.Name || ''}</h1>
                       <p><span>address : </span>{point.Address || ''}</p>
                       {/* <p><span>Accessibilité</span> : {(point.Access) ? 'oui' : 'non'}</p> */}
-                      <NavLink exact to="/Lieu">
+                      <NavLink exact to={placeUrl(point.Id, point.Name)}>
                         <Button
                           variant={contained}
                           className="pagelieu-button"

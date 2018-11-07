@@ -49,7 +49,7 @@ const routes = {
     subtitle: '',
     component: Profil,
   },
-  '/Lieu': {
+  '/Lieu/:id/:slug': {
     title: 'Lieu',
     subtitle: '',
     component: Lieu,
@@ -99,7 +99,10 @@ class App extends React.Component {
     const route = routes[pathname];
 
     // On modifie le title de la page
-    document.title = route.title;
+    if (route) {
+      document.title = route.title;
+    }
+    document.title = 'Lieu';
   }
 
   goToIndex = (index) => {

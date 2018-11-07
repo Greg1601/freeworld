@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Place controller.
@@ -159,7 +160,7 @@ class PlaceController extends AbstractController
      * @Route("/show", name="place_show")
      * @Method("Post")
      */
-    public function showAction(Request $request)
+     public function showAction(Request $request, Serializerinterface $serializer)
     {
 
         // Récupération de l'info 'id" du lieu qu'on veut afficher
@@ -170,6 +171,10 @@ class PlaceController extends AbstractController
                 json_decode($request->getContent(), true)['id']
             )
         ;
+
+        $serialized = $serializer->serialize(
+            $place->getAccessibilities(), 'array');
+
 
         // renvoi des données récupérées en BDD
         return $this->json(
@@ -185,6 +190,7 @@ class PlaceController extends AbstractController
                     ->findOneById($place->getCityId())
                     ->getRealName(),
                 'Image' => $place->getImage(),
+                'Access' => $serialized,
                 'Positive' => $place->getPositiveOpinion(),
                 'Negative' => $place->getNegativeOpinion(),
                 'Latitude' => $place->getLatitudeDeg(),
@@ -194,6 +200,8 @@ class PlaceController extends AbstractController
             Response::HTTP_OK
         );
     }
+
+
 
     /**
      * Sends image URL in user entity.
