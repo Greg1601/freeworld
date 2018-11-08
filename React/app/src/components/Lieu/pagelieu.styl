@@ -2,19 +2,32 @@
   margin: 5em auto 1em
   padding: 0.5em
   width: 70%
+  @media screen and (max-device-width: 768px)
+    margin-top: 10em
+    width: 100%
   h3, h4, h5
     font-size: 1.5em
     font-weight: 500
     color: #5E2E68
+    @media screen and (max-device-width: 768px)
+      font-size: 4em
+  p
+    @media screen and (max-device-width: 768px)
+      font-size: 2.5em
   &-info
     display: flex
     justify-content: space-between
+    @media screen and (max-device-width: 768px)
+      flex-direction: column
+      margin: auto
     &-block
       display: flex
       flex-direction: column
       justify-content: space-between
       width: 65%
       padding: 1em
+      @media screen and (max-device-width: 768px)
+        width: 90%
       p
         margin: 1em
         color: #484848
@@ -31,17 +44,26 @@
   .pagelieu
     display: flex
     justify-content: space-between
+    @media screen and (max-device-width: 768px)
+      flex-direction: column-reverse
     &-block
       width: 50%
       padding: 2em 0 2em 2em
       display: flex
       flex-direction: column
       align-items: flex-end
+      @media screen and (max-device-width: 768px)
+        width: 100%
+        align-items: flex-start
+        padding: 2em 0
       &-signal
         width: 65%
         text-align: center
         border-radius: 0.5em
         margin-top: 3em
+        @media screen and (max-device-width: 768px)
+          width: 95vw
+          margin-top: 6em
         h3
           font-size: 1.5em
           color: #484848
@@ -51,6 +73,9 @@
           border-radius: 0.2em
           color: #5E2E68
           font-size: 2em
+          @media screen and (max-device-width: 768px)
+            font-size: 3em
+            padding: 0.5em 1em
         button:hover
           background-color: #5E2E68
           color: white
@@ -58,3 +83,7 @@
           margin: 2em 0
 .title
   font-weight: 500
+#map
+  @media screen and (max-device-width: 768px)
+    width: 95vw
+    height: 30vh

@@ -49,6 +49,7 @@ class Upload extends React.Component {
             multiple={false}
             accept="image/*"
             onDrop={this.onImageDrop}
+            className="upload-drop"
           >
             <p>Glissez une image ou clickez pour selectionner une image dans vos dossiers</p>
           </Dropzone>

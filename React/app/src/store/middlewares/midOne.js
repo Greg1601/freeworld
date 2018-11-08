@@ -39,30 +39,6 @@ const WebSocket = store => next => (action) => {
             }))
             .catch(error => console.log(error)));
       break;
-    // case 'LOGIN_REQUEST':
-    //   axios.post('http://127.0.0.1:8002/api/login_check', {
-    //     email: action.email,
-    //     password: action.password,
-    //   })
-    //     .then(response =>
-    //       store.dispatch({
-    //         type: 'T',
-    //         token: response.data.token,
-    //       },
-    //       axios.post('http://127.0.0.1:8002/getLogs', {
-    //         token: response.data.token,
-    //       })
-    //         .then(response => store.dispatch({
-    //           type: 'TOKEN',
-    //           userId: response.data.id,
-    //           username: action.username,
-    //           email: response.data.email,
-    //         }))
-    //         .catch(() => store.dispatch({
-    //           type: 'FAIL_LOGIN',
-    //         }))
-    //       ));
-    //   break;
     case 'LOGIN_REQUEST':
       axios.post('http://127.0.0.1:8002/api/login_check', {
         email: action.email,
@@ -111,16 +87,6 @@ const WebSocket = store => next => (action) => {
         vote: action.vote,
       })
         .then(response => console.log(action.userId))
-        .catch(error => console.log(error));
-      break;
-    case 'GET_COMMENT':
-      axios.post('http://127.0.0.1:8002/post/list', {
-        placeId: action.id,
-      })
-        .then(response => store.dispatch({
-          type: 'COMMENT',
-          comments: response.data,
-        }))
         .catch(error => console.log(error));
       break;
     case 'GET_POINTS':
@@ -232,9 +198,6 @@ const WebSocket = store => next => (action) => {
           positive: response.data.Positive,
           negative: response.data.Negative,
         }))
-        // {
-        //   type: 'GET_VOTES',
-        // },
         .catch(error => console.log(error));
       break;
     case 'SEND_IMAGE':

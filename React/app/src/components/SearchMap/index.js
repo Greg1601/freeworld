@@ -8,6 +8,9 @@ import purple from '@material-ui/core/colors/purple';
 import myIcon from 'src/utils/icon';
 import { NavLink } from 'react-router-dom';
 
+import CategoryName from 'src/utils/categoryName';
+import {placeUrl} from 'src/utils/url';
+
 const styles = theme => ({
   progress: {
     margin: theme.spacing.unit * 2,
@@ -27,7 +30,9 @@ class SearchMap extends Component {
       lon,
       name,
       nodes,
+      nodesBdd,
       getInfo,
+      getInfoBdd,
     } = this.props;
 
     if (lat && lon) {
@@ -62,7 +67,7 @@ class SearchMap extends Component {
                       <h1>{point.name || ''}</h1>
                       <p>tel:{point.phone || ''}</p>
                       <p>acces: {point.wheelchair || ''}</p>
-                      <NavLink exact to="/Lieu">
+                      <NavLink exact to={placeUrl(point.Id, point.name)}>
                         <Button
                           variant={contained}
                           className="pagelieu-button"
@@ -74,7 +79,32 @@ class SearchMap extends Component {
                     </div>
                   </Popup>
                 </Marker>
-        ))}
+              ))}
+              {(nodesBdd) ? nodesBdd.map(point => (
+                <Marker
+                  key={point.Id}
+                  position={[point.Latitude, point.Longitude]}
+                  icon={myIcon(point.Placetype)}
+                >
+                  <Popup>
+                    <div>
+                      <h3><span>Catégorie : </span>{CategoryName(point.Placetype)}</h3>
+                      <h1><span>Nom : </span>{point.Name || ''}</h1>
+                      <p><span>address : </span>{point.Address || ''}</p>
+                      {/* <p><span>Accessibilité</span> : {(point.Access) ? 'oui' : 'non'}</p> */}
+                      <NavLink exact to={placeUrl(point.Id, point.Name)}>
+                        <Button
+                          variant={contained}
+                          className="pagelieu-button"
+                          onClick={getInfoBdd(point.Id)}
+                        >
+                          Voir
+                        </Button>
+                      </NavLink>
+                    </div>
+                  </Popup>
+                </Marker>
+              )) : 'pas de resultat ...'}
             </Map>
           </div>
         );

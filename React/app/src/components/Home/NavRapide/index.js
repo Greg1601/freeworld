@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
-    maxWidth: 500,
+    maxWidth: 400,
   },
   media: {
     height: 0,
@@ -33,9 +33,9 @@ const cards = [
   },
   {
     key: 3,
-    title: 'Découvrez, partagez',
-    presentation: 'Bookez votre agenda ! Participez aux événements mis en ligne par la communauté.',
-    imgPath: 'http://casaevents.ma/wp-content/uploads/2018/03/380883_presse.jpg',
+    title: 'Devenez un guide',
+    presentation: 'Vous pouvez ajouter un lieu depuis votre page de profil.',
+    imgPath: 'https://serene-marceau.fr/wp-content/uploads//2016/02/S004-Place-de-la-Concorde.jpg',
   },
 ];
 
@@ -59,9 +59,9 @@ function NavRapide(props) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button className="button" size="medium" color="primary">
+            {/* <Button className="button" size="medium" color="primary">
               Voir plus
-            </Button>
+            </Button> */}
           </CardActions>
         </Card>
       ))}

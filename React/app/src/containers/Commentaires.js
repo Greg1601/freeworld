@@ -25,6 +25,11 @@ const mapDispatchToProps = dispatch => ({
       id,
     });
   },
+  cleanComments: () => {
+    dispatch({
+      type: 'CLEAN_COMMENTS',
+    });
+  },
 });
 
 

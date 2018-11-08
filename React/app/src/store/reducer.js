@@ -6,6 +6,7 @@ const initialState = {
   zoom: 14,
   view: 'profil',
   searchBarValue: '',
+  logged: false,
 };
 
 /**
@@ -84,15 +85,15 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         currentCategoryPoint: action.categoryPoint,
       };
-    case 'GET_VOTES': {
-      const total = action.positive + action.negative;
-      const exactVote = ((action.positive - action.negative) - total) * 100;
-      const vote = Math.round(exactVote);
-      return {
-        ...state,
-        vote,
-      };
-    }
+    // case 'GET_VOTES': {
+    //   const total = action.positive + action.negative;
+    //   const exactVote = (action.positive / total) * 100;
+    //   const vote = Math.round(exactVote);
+    //   return {
+    //     ...state,
+    //     vote,
+    //   };
+    // }
     // case 'SET_VOTE':
     //   return {
     //     ...state,
@@ -118,16 +119,16 @@ const reducer = (state = initialState, action = {}) => {
     //     ...state,
     //     [action.name]: state[action.name] - 1,
     //   };
+    // store token forSymfony
     case 'TOKEN':
       return {
         ...state,
-        // token: action.token,
         token: action.token,
       };
+    // store info logs
     case 'LOGS':
       return {
         ...state,
-        // token: action.token,
         logged: true,
         userId: action.userId,
         currentUser: action.username,
@@ -138,6 +139,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         logged: false,
       };
+    // if the user is disconnected
     case 'LOGOUT':
       return {
         ...state,
@@ -187,6 +189,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         nodes: false,
       };
+    // get the infos for the selected spot
     case 'GET_POINT_INFO':
       return {
         ...state,
@@ -203,9 +206,10 @@ const reducer = (state = initialState, action = {}) => {
           lon: action.lon,
         },
       };
+    // get the infos for the selected page of one place
     case 'STORE_INFO_BDD': {
       const total = action.positive + action.negative;
-      const exactVote = ((action.positive - action.negative) / total) * 100;
+      const exactVote = (action.positive / total) * 100;
       const vote = Math.round(exactVote);
       return {
         ...state,
@@ -222,6 +226,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         searchBarValue: '',
+      };
+    case 'CLEAN_COMMENTS':
+      return {
+        ...state,
+        comments: false,
       };
     case 'STORE_IMAGES':
       return {
@@ -248,11 +257,7 @@ const reducer = (state = initialState, action = {}) => {
         footerPhone: '',
         footerMessage: '',
       };
-    case 'COMMENT':
-      return {
-        ...state,
-        comments: action.comments,
-      };
+    // filter categories of the home Map
     case 'FILTER_POINTS': {
       const newPoints = state.allNodes.filter((node) => {
         if (action.value === 'all') {

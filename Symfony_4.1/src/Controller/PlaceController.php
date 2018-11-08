@@ -160,7 +160,7 @@ class PlaceController extends AbstractController
      * @Route("/show", name="place_show")
      * @Method("Post")
      */
-     public function showAction(Request $request, Serializerinterface $serializer)
+     public function showAction(Request $request)
     {
 
         // Récupération de l'info 'id" du lieu qu'on veut afficher
@@ -168,20 +168,79 @@ class PlaceController extends AbstractController
             ->getManager()
             ->getRepository('App:Place')
             ->findOneById(
+                // !!!!!!!!!!!!!!!! Ligne pour test avec Postman !!!!!!!!!!!!!
+//                $request->request->get('id')
                 json_decode($request->getContent(), true)['id']
             )
         ;
-//        dump($place);die;
+
+        $postList = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('App:Post')
+            ->findByPlace($place);
 
         // Récupération du nom du ou des objets de classe Accessibility relatif(s) à l'objet $place dans un tableau pour affichage
         foreach ($place->getAccessibilities() as $accesses){
             $access[] = $accesses->getEquipment();
         }
 
-        $serialized = $serializer->serialize(
-            $place->getAccessibilities(), 'array');
+        if ($postList != null) {
+            // Récupération des éléments "Post" relatifs à chaque élément "Place"
+            foreach ($postList as $post) {
 
+                // récupération de la liste des commentaires en relation avec un post donné, via son ID
+                $commentsList = $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('App:Comment')
+                    ->findByPostId($post->getId());
 
+                if ($commentsList != null) {
+
+                    // Récupération des éléments "Comment" relatifs à chaque élément "Post"
+                    foreach ($commentsList as $comment) {
+
+                        // Récupération de l'auteur du comment
+                        $author = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository('App:Person')
+                            ->findOneById($comment->getUserId())
+                            ->getUsername();
+
+                        // Préparation des éléments Comment pour renvoi
+                        $commentDetails = array(
+                            'Id' => $comment->getId(),
+                            'Body' => $comment->getBody(),
+                            'Released' => $comment->getReleasedDate(),
+                            'Author' => $author
+                        );
+                    }
+
+                }
+                // Si il n'y a pas de Comment relatif au Post, on renvoie null
+                else {
+                    $commentDetails = null;
+                }
+
+                // Préparation des éléments Post pour renvoi
+                $posts[] = array(
+                    'Id' => $post->getId(),
+                    'Title' => $post->getTitle(),
+                    'Body' => $post->getBody(),
+                    'Image' => $post->getImage(),
+                    'Released' => $post->getReleasedDate(),
+                    'PositiveOpinion' => $post->getPositiveOpinion(),
+                    'NegativeOpinion' => $post->getNegativeOpinion(),
+                    'Place' => $post->getPlace()->getName(),
+                    'Author' => $post->getAuthor()->getUsername(),
+                    'Comments' => $commentDetails
+                );
+
+            }
+        }
+        // si il n'y a pas de Post relatif au Place, on renvoie null
+        else {
+            $posts = null;
+        }
         // renvoi des données récupérées en BDD
         return $this->json(
             array(
@@ -196,11 +255,8 @@ class PlaceController extends AbstractController
                     ->findOneById($place->getCityId())
                     ->getRealName(),
                 'Image' => $place->getImage(),
-<<<<<<< HEAD
-                'Access' => $serialized,
-=======
                 'Access' => $access,
->>>>>>> c0878abf9b2f30d8b8345141fd3a7aa256c0de09
+                'Posts' => $posts,
                 'Positive' => $place->getPositiveOpinion(),
                 'Negative' => $place->getNegativeOpinion(),
                 'Latitude' => $place->getLatitudeDeg(),

@@ -9,6 +9,8 @@ import purple from '@material-ui/core/colors/purple';
 import myIcon from 'src/utils/icon';
 import { NavLink } from 'react-router-dom';
 
+import {placeUrl} from 'src/utils/url'
+
 const styles = theme => ({
   progress: {
     margin: theme.spacing.unit * 2,
@@ -72,7 +74,7 @@ const InfosLieu = ({
           <h5>Appréciation</h5>
           <Rating />
         </div>
-        <NavLink exact to="/Lieu">
+        <NavLink exact to={placeUrl(id, name)}>
           <Button
             variant={contained}
             className="pagelieu-button"

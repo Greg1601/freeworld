@@ -17,6 +17,9 @@ const styles = theme => ({
     maxWidth: '100%',
     maxHeight: '100%',
     flexGrow: 1,
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '80%',
+    },
   },
   header: {
     display: 'flex',
@@ -56,24 +59,16 @@ class CarousselImage extends React.Component {
   };
 
   render() {
-    const tutorialSteps = [
+    const slides = [
       {
         id: 1,
         imgPath: this.props.photos,
-      },
-      {
-        id: 2,
-        imgPath: 'http://www.lepoint.fr/images/2017/11/16/11328852lpw-11329053-article-theatre-jpg_4765039_660x281.jpg',
-      },
-      {
-        id: 3,
-        imgPath: 'http://casaevents.ma/wp-content/uploads/2018/03/380883_presse.jpg',
       },
     ];
     const { classes, theme } = this.props;
     const { activeStep } = this.state;
 
-    const maxSteps = tutorialSteps.length;
+    const maxSteps = slides.length;
     return (
       <div className={classes.root}>
         <div className="carousselimage-title">
@@ -85,7 +80,7 @@ class CarousselImage extends React.Component {
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
         >
-          {tutorialSteps.map(step => (
+          {slides.map(step => (
             <div key={step.id} className="carousel">
               <img className={classes.img} src={step.imgPath} alt={step.label} />
             </div>

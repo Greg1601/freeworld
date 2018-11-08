@@ -15,6 +15,7 @@ import SearchMap from 'src/components/SearchMap';
 const mapStateToProps = state => ({
   zoom: state.zoom,
   nodes: state.nodes,
+  nodesBdd: state.nodesBdd,
   lat: state.resultLat,
   lon: state.resultLon,
   name: state.resultName,
@@ -42,6 +43,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: 'GET_INFO',
       point,
+    });
+  },
+  getInfoBdd: id => () => {
+    dispatch({
+      type: 'GET_INFO_BDD',
+      id,
     });
   },
 });

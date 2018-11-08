@@ -19,27 +19,32 @@ class CommentForm extends React.Component {
   }
   state = {
   }
+
+  // if click on ThumbUp
   Up = () => {
-    this.setState({ vote: 1, clicked: true });
+    this.setState({ vote: 1, opinion: 'oui', clicked: true });
   }
+
+  // if click on ThumbUp
   Down = () => {
-    this.setState({ vote: 0, clicked: true });
+    this.setState({ vote: 0, opinion: 'non', clicked: true });
   }
   handleSubmit = (evt) => {
     evt.preventDefault();
     const { comment, titlecomment, userId, placeId } = this.props;
     const { vote } = this.state;
+    // check if any field is empty, then there is an error
     if (titlecomment === '' || comment === '' || this.state.clicked === false) {
       this.setState({ error: true });
     } this.setState({ error: false });
 
+    // if no error, no empty field
     if (!this.state.error) {
       this.props.sendComment(comment, titlecomment, userId, placeId, vote);
     }
   }
   render() {
     const { placeId } = this.props;
-    console.log(this.props)
     return (
       <div className="commentForm" data={placeId}>
         <form onSubmit={this.handleSubmit} className="commentForm-form">
@@ -49,7 +54,7 @@ class CommentForm extends React.Component {
             <p>Êtes-vous satisfait de l'accessibilité du lieu ?</p>
             {(this.state.clicked) ?
               <div>
-                <div className="rating-vote-clicked"></div>
+                <div className="rating-vote-clicked" />
                 <p>Vous avez voté {this.state.opinion}</p>
               </div>
               :

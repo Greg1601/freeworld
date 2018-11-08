@@ -3,16 +3,19 @@
   color: #484848
   width: 65%
   text-align: center
+  @media screen and (max-device-width: 768px)
+    margin: auto
   h5
     font-size: 2em
     color: #5E2E68
-    margin-bottom: 1em
-    padding-bottom: 0.1em
-  &-title
-    border-bottom: 0.1em solid #484848
+    margin: 1em auto
+    padding-bottom: 1em
+    border-bottom: 2px solid #484848
   &-tags
     display: flex
     margin-top: 1em
+    @media screen and (max-device-width: 768px)
+      margin-top: 3em
   &-tags h6
     background-color: #5E2E68
     font-size: 1.5em
@@ -22,3 +25,5 @@
     padding: 0.5em 1em
     margin-right: 1em
     border-radius: 0.3em
+    @media screen and (max-device-width: 768px)
+      font-size: 3em

@@ -13,11 +13,10 @@ import CarousselImage from 'src/components/Lieu/CarousselImage';
 import Minimap from 'src/components/Recherche/Minimap';
 import CentresInteret from 'src/components/CentresInteret';
 import Accessibilite from 'src/components/Lieu/Accessibilite';
-import Commentaires from 'src/containers/Commentaires';
+import Commentaires from 'src/components/Lieu/Commentaires';
 import SignalForm from 'src/components/Lieu/SignalForm';
 import Rating from 'src/components/Lieu/Rating';
 import CategoryName from 'src/utils/categoryName';
-import UploadApi from 'src/containers/UploadApi';
 import Upload from 'src/containers/Upload';
 /**
  * Code
@@ -78,7 +77,7 @@ class Lieu extends React.Component {
           <div className="pagelieu">
             <div className="pagelieu-block">
               <div>
-                <UploadApi pointId={currentPoint.id} />
+                <Upload pointId={currentPoint.id} />
               </div>
               {(photos && photos.length > 0) ?
                 <CarousselImage photos={photos} /> : ''
@@ -117,17 +116,16 @@ class Lieu extends React.Component {
           </div>
           <div className="pagelieu">
             <div className="pagelieu-block">
+              <Upload pointId={currentPointBdd.Id} />
               {(currentPointBdd.Image && currentPointBdd.Image.length > 0) ?
                 <CarousselImage photos={currentPointBdd.Image} /> :
-                <div>
-                  <Upload pointId={currentPointBdd.Id} />
-                </div>
+                null
                 }
-              <Commentaires currentUser={currentUser} placeId={currentPointBdd.Id} />
+              <Commentaires posts={currentPointBdd.Posts} currentUser={this.props.currentUser} placeId={currentPointBdd.Id} />
             </div>
             <div className="pagelieu-block pagelieu-fix">
               <CentresInteret currentCatId={currentPointBdd.Placetype} />
-              <Accessibilite />
+              <Accessibilite access={currentPointBdd.Access} />
               <div className="pagelieu-block-signal">
                 <h3>
                   Vous avez constaté une erreur dans les informations ?

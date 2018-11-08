@@ -94,11 +94,11 @@ import Caroussel from 'src/components/Home/Caroussel';
                <span>A proximité de votre position</span>
              </div>
              <Carte />
-             <div className="app-location">
+             {/* <div className="app-location">
                <PaperPlane className="pointer" />
                <span>Prochains événements</span>
-             </div>
-             <Caroussel />
+             </div> */}
+             {/* <Caroussel /> */}
            </main>
          </div>
      )
