@@ -56,6 +56,20 @@ const labels = [
 ];
 
 class FormLieu extends React.Component {
+  static defaultProps = {
+    placename: '',
+    placecity: '',
+    postalcode: '',
+    placeaddress: '',
+    placedescription: '',
+  }
+  static propTypes = {
+    placename: PropTypes.string,
+    placecity: PropTypes.string,
+    postalcode: PropTypes.string,
+    placeaddress: PropTypes.string,
+    placedescription: PropTypes.string,
+  }
   state = {
     placetype: '',
     entree: false,
@@ -78,7 +92,7 @@ class FormLieu extends React.Component {
     const { placename, placecity, postalcode, placeaddress, placedescription, userId } = this.props;
     const { placetype, entree, rampe, ascenseur, wc, place } = this.state;
     const address = `${placeaddress}, ${placecity}`;
-    this.props.googleGeo(userId, address, placename, placecity, postalcode, placeaddress, placedescription, placetype, entree, rampe, ascenseur, wc, place);
+    this.props.nominatimGeo(userId, address, placename, placecity, postalcode, placeaddress, placedescription, placetype, entree, rampe, ascenseur, wc, place);
   }
   render() {
     const { changeState, classes, categories } = this.props;
@@ -160,11 +174,7 @@ class FormLieu extends React.Component {
 
 FormLieu.propTypes = {
   changeState: PropTypes.func.isRequired,
-  placename: PropTypes.string.isRequired,
-  placecity: PropTypes.string.isRequired,
-  placeaddress: PropTypes.string.isRequired,
-  placedescription: PropTypes.string.isRequired,
-  googleGeo: PropTypes.func.isRequired,
+  nominatimGeo: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(FormLieu);

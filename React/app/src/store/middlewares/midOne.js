@@ -15,8 +15,8 @@ const WebSocket = store => next => (action) => {
         })
         .catch(error => console.log(error));
       break;
-    case 'GOOGLE_GEOCODE':
-      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${action.address},&key=${googleKey}`)
+    case 'NOMINATIM_GEOCODE':
+      axios.get(`http://nominatim.openstreetmap.org/search?format=json&limit=1&q=${action.address}`)
         .then(response =>
           axios.post('http://127.0.0.1:8002/place/new', {
             placename: action.placename,
@@ -30,8 +30,8 @@ const WebSocket = store => next => (action) => {
             wc: action.wc,
             place: action.place,
             userId: action.userId,
-            lat: response.data.results[0].geometry.location.lat,
-            lng: response.data.results[0].geometry.location.lng,
+            lat: response.data[0].lat,
+            lng: response.data[0].lon,
           })
             .then(response => store.dispatch({
               type: 'RESP_CREATE',

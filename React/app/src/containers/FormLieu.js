@@ -27,9 +27,9 @@ const mapStateToProps = state => ({
 
 // Actions
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  googleGeo: (userId, address, placename, placecity, postalcode, placeaddress, placedescription, placetype, entree, rampe, ascenseur, wc, place) => {
+  nominatimGeo: (userId, address, placename, placecity, postalcode, placeaddress, placedescription, placetype, entree, rampe, ascenseur, wc, place) => {
     dispatch({
-      type: 'GOOGLE_GEOCODE',
+      type: 'NOMINATIM_GEOCODE',
       userId,
       address,
       placename,

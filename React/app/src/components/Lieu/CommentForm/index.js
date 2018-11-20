@@ -18,65 +18,134 @@ class CommentForm extends React.Component {
     clicked: PropTypes.bool,
   }
   state = {
+    opinion: '',
+    errors: {},
   }
 
   // if click on ThumbUp
   Up = () => {
-    this.setState({ vote: 1, opinion: 'oui', clicked: true });
+    const { errors } = this.state;
+    this.setState({
+      vote: 1,
+      opinion: 'oui',
+      clicked: true,
+      errors: {
+        ...errors,
+        opinion: null,
+      },
+    });
   }
 
   // if click on ThumbUp
   Down = () => {
-    this.setState({ vote: 0, opinion: 'non', clicked: true });
+    const { errors } = this.state;
+    this.setState({
+      vote: 0,
+      opinion: 'non',
+      clicked: true,
+      errors: {
+        ...errors,
+        opinion: null,
+      },
+    });
   }
   handleSubmit = (evt) => {
     evt.preventDefault();
     const { comment, titlecomment, userId, placeId } = this.props;
-    const { vote } = this.state;
-    // check if any field is empty, then there is an error
-    if (titlecomment === '' || comment === '' || this.state.clicked === false) {
-      this.setState({ error: true });
-    } this.setState({ error: false });
-
-    // if no error, no empty field
-    if (!this.state.error) {
-      this.props.sendComment(comment, titlecomment, userId, placeId, vote);
+    const { vote, opinion } = this.state;
+    const errors = this.validate(comment, titlecomment, opinion);
+    if (Object.keys(errors).length > 0) {
+      return this.setState({ errors });
     }
+    this.setState({ errors: [], submitted: true });
+    return this.props.sendComment(comment, titlecomment, userId, placeId, vote);
+  }
+
+
+  validate = (comment, titlecomment, opinion) => {
+    const errors = {};
+    if (comment.length === 0) {
+      errors.comment = 'Veuillez écrire un commentaire';
+    }
+    if (titlecomment.length === 0) {
+      errors.titlecomment = 'Veuillez donner un titre';
+    }
+    if (opinion.length === 0) {
+      errors.opinion = 'Veuillez écrire un commentaire';
+    }
+    return errors;
+  }
+
+  handleBlur = prop => (evt) => {
+    console.log(prop)
+    const { errors } = this.state;
+    this.setState({
+      errors: {
+        ...errors,
+        [prop]: null,
+      },
+    });
   }
   render() {
     const { placeId } = this.props;
+    if (!this.state.submitted) {
+      return (
+        <div className="commentForm" data={placeId}>
+          <form onSubmit={this.handleSubmit} className="commentForm-form">
+            <div className="rating-vote">
+              <ThumbDown onClick={this.Down} className="material-icons rating-vote-icon" name={placeId} />
+              <ThumbUp onClick={this.Up} className="material-icons rating-vote-icon" name={placeId} />
+              <p>Êtes-vous satisfait de l'accessibilité du lieu ?</p>
+              {(this.state.clicked) ?
+                <div>
+                  <div className="rating-vote-clicked" />
+                  <p>Vous avez voté {this.state.opinion}</p>
+                </div>
+                :
+                <div>
+                  { this.state.errors.opinion ?
+                    <span style={{ color: 'red' }}>{this.state.errors.opinion}</span>
+                    :
+                    null
+                  }
+                </div>
+              }
+            </div>
+            <div onBlur={this.handleBlur('titlecomment')}>
+              <FieldInput
+                name="titlecomment"
+                placeholder="Donnez un titre à votre commentaire"
+                type="text"
+                className={this.state.errors.titlecomment ? 'error' : null}
+              />
+              { this.state.errors.titlecomment ?
+                <span style={{ color: 'red' }}>{this.state.errors.titlecomment}</span>
+                :
+                null
+              }
+            </div>
+            <div onBlur={this.handleBlur('comment')}>
+              <TextArea
+                name="comment"
+                placeholder="Ecrivez votre commentaire"
+                className={this.state.errors.comment ? 'error' : null}
+              />
+              { this.state.errors.comment ?
+                <span style={{ color: 'red' }}>{this.state.errors.comment}</span>
+                :
+                null
+              }
+            </div>
+            <button variant="contained" className="pagelieu-button commentForm-button">
+              Envoyer
+            </button>
+          </form>
+        </div>
+      );
+    }
     return (
-      <div className="commentForm" data={placeId}>
-        <form onSubmit={this.handleSubmit} className="commentForm-form">
-          <div className="rating-vote">
-            <ThumbDown onClick={this.Down} className="material-icons rating-vote-icon" name={placeId} />
-            <ThumbUp onClick={this.Up} className="material-icons rating-vote-icon" name={placeId} />
-            <p>Êtes-vous satisfait de l'accessibilité du lieu ?</p>
-            {(this.state.clicked) ?
-              <div>
-                <div className="rating-vote-clicked" />
-                <p>Vous avez voté {this.state.opinion}</p>
-              </div>
-              :
-              null
-            }
-          </div>
-          <FieldInput
-            name="titlecomment"
-            placeholder="Donnez un titre à votre commentaire"
-            type="text"
-          />
-          <TextArea name="comment" placeholder="Ecrivez votre commentaire" />
-          <button variant="contained" className="pagelieu-button commentForm-button">
-            Envoyer
-          </button>
-        </form>
-        {
-          this.state.error ?
-            <p style={{ color: 'red' }}>Veuillez remplir tous les champs !</p>
-        :
-          null
-        }
+      <div>
+        Thank You
       </div>
     );
   }
