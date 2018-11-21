@@ -86,7 +86,15 @@ const WebSocket = store => next => (action) => {
         placeId: action.placeId,
         vote: action.vote,
       })
-        .then(response => console.log(action.userId))
+        .then(axios.post('http://127.0.0.1:8002/place/show', {
+          id: action.placeId,
+        })
+          .then(response => store.dispatch({
+            type: 'STORE_INFO_BDD',
+            currentPointBdd: response.data,
+            positive: response.data.Positive,
+            negative: response.data.Negative,
+          })))
         .catch(error => console.log(error));
       break;
     case 'GET_POINTS':

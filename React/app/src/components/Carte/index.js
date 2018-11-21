@@ -64,25 +64,9 @@ class Carte extends Component {
     placetype: '',
   }
 
-  // componentDidUpdate() {
-  //   // e.preventDefault();
-  //   // const { value } = e.target;
-  //   // console.log(e.target.value)
-  //   // const {placetype} = this.state;
-  //   const { nodes } = this.props;
-  //   console.log(this.state.placetype)
-  //   const filterPoints = nodes.filter(node => node.category.identifier === this.state.placetype);
-  //   this.props.filterPoints(filterPoints);
-  //   // this.setState({nodes : filterPoint})
-  //   // console.log(filterNodes)
-  // };
   componentWillUnmount() {
     this.props.clearNodes();
   }
-
-  handleChange = (event) => {
-    // this.props.onChangeInput(value);
-  };
 
   filterCategory = (event) => {
     event.preventDefault();
