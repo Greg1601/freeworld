@@ -30,13 +30,18 @@ const styles = theme => ({
   select: {
     [theme.breakpoints.down('md')]: {
       fontSize: '2.5em',
-      marginTop: '0.5em',
+      marginTop: '1em',
     },
   },
   li: {
     [theme.breakpoints.down('md')]: {
       fontSize: '2.5em',
       padding: '0.5em',
+    },
+  },
+  font: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: '1em',
     },
   },
   label: {
@@ -73,6 +78,7 @@ class Carte extends Component {
     this.setState({ placetype: event.target.value });
     this.props.filterPoints(event.target.value);
   };
+
   render() {
 
     const {
@@ -144,6 +150,7 @@ class Carte extends Component {
                 <Marker
                   key={point.id}
                   position={[point.lat, point.lon]}
+                  className="marker"
                   icon={myIcon(point.category.id)}
                 >
                   <Popup className="map-popup">
@@ -181,7 +188,7 @@ class Carte extends Component {
                       <NavLink exact to={placeUrl(point.Id, point.Name)}>
                         <Button
                           variant={contained}
-                          className="pagelieu-button"
+                          className={classes.font}
                           onClick={getInfoBdd(point.Id)}
                         >
                           Voir
@@ -214,6 +221,7 @@ Carte.propTypes = {
   zoom: PropTypes.number.isRequired,
   getInfo: PropTypes.func.isRequired,
   getLocation: PropTypes.func.isRequired,
+  filterPoints: PropTypes.func.isRequired,
   getPoints: PropTypes.func.isRequired,
   getCity: PropTypes.func.isRequired,
   getPointBdd: PropTypes.func.isRequired,

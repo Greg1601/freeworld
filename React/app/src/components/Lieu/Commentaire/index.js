@@ -19,7 +19,7 @@ const Commentaire = ({ com }) => (
     <div className="commentaire-profil">
       <span>Satisfait ? {com.Vote ? 'Oui' : 'Non'}</span>
       <h6>{com.Author}</h6>
-      <p>{com.Released}</p>
+      <p className="date">{com.Released}</p>
       <div className="barre" />
     </div>
     <div className="commentaire-post">

@@ -110,41 +110,41 @@ class FicheProfil extends React.Component {
                   multiple={false}
                   accept="image/*"
                   onDrop={this.onImageDrop}
-                  >
-                    <p>Glissez une image ou clickez pour selectionner une image dans vos dossiers</p>
-                  </Dropzone>
-                  {uploadedFileCloudinaryUrl === '' ? null :
-                  <div>
-                    <p>{uploadedFile.name}</p>
-                    <img src={uploadedFileCloudinaryUrl} alt="uploadedFile" />
-                  </div>}
-                </div>
+                >
+                  <p>Glissez une image ou clickez pour selectionner une image dans vos dossiers</p>
+                </Dropzone>
+                {uploadedFileCloudinaryUrl === '' ? null :
+                <div>
+                  <p>{uploadedFile.name}</p>
+                  <img src={uploadedFileCloudinaryUrl} alt="uploadedFile" />
+                </div>}
+              </div>
                 : ''
               }
-              <CardHeader
-                avatar={
-                  <Avatar aria-label="Recipe" className={classes.avatar} src={this.props.userInfo.Image || 'images/grey/jpeg'} />
-                }
-                title={this.props.userInfo.Name}
-                subheader={this.props.userInfo.Email}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="headline" component="h4">
-                  Présentation
-                </Typography>
-                <Typography component="p">
-                  {this.props.userInfo.Description}
-                </Typography>
-                <Typography gutterBottom variant="headline" component="h4">
-                  Ville
-                </Typography>
-                <Typography component="p">
-                  {this.props.userInfo.City}
-                </Typography>
-                <Typography gutterBottom variant="headline" component="h4">
-                  Centres d'intérêt
-                </Typography>
-              </CardContent>
+            <CardHeader
+              avatar={
+                <Avatar aria-label="Recipe" className={classes.avatar} src={this.props.userInfo.Image || 'images/grey/jpeg'} />
+              }
+              title={this.props.userInfo.Name}
+              subheader={this.props.userInfo.Email}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="headline" component="h4">
+                Présentation
+              </Typography>
+              <Typography component="p">
+                {this.props.userInfo.Description}
+              </Typography>
+              <Typography gutterBottom variant="headline" component="h4">
+                Ville
+              </Typography>
+              <Typography component="p">
+                {this.props.userInfo.City}
+              </Typography>
+              <Typography gutterBottom variant="headline" component="h4">
+                Centres d'intérêt
+              </Typography>
+            </CardContent>
               <CardActions className={classes.actions} disableActionSpacing>
                 <IconButton aria-label="Add to favorites" onClick={changeState('editProfil')}>
                   <i className="material-icons">

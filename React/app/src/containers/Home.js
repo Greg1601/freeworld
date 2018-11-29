@@ -19,7 +19,7 @@ const mapStateToProps = state => ({
 });
 
 // Actions
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = {};
 
 
 /*

@@ -208,8 +208,8 @@ const reducer = (state = initialState, action = {}) => {
       };
     // get the infos for the selected page of one place
     case 'STORE_INFO_BDD': {
-      const total = action.positive + action.negative;
-      const exactVote = (action.positive / total) * 100;
+      const total = action.currentPointBdd.Positive + action.currentPointBdd.Negative;
+      const exactVote = (action.currentPointBdd.Positive / total) * 100;
       const vote = Math.round(exactVote);
       return {
         ...state,

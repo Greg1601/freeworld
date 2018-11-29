@@ -71,13 +71,12 @@ class CommentForm extends React.Component {
       errors.titlecomment = 'Veuillez donner un titre';
     }
     if (opinion.length === 0) {
-      errors.opinion = 'Veuillez écrire un commentaire';
+      errors.opinion = 'Veuillez cliquer sur un pouce';
     }
     return errors;
   }
 
   handleBlur = prop => (evt) => {
-    console.log(prop)
     const { errors } = this.state;
     this.setState({
       errors: {

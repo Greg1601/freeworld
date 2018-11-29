@@ -18,6 +18,7 @@ const mapStateToProps = state => ({
   currentUser: state.currentUser,
   userInfo: state.userInfo,
   city: state.city,
+  logged: state.logged,
 });
 
 // Actions

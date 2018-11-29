@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 import Arrow from 'react-icons/lib/fa/arrow-left';
 
 /**
@@ -121,7 +122,12 @@ class Lieu extends React.Component {
                 <CarousselImage photos={currentPointBdd.Image} /> :
                 null
                 }
-              <Commentaires posts={currentPointBdd.Posts} currentUser={this.props.currentUser} placeId={currentPointBdd.Id} />
+              <Commentaires
+                posts={currentPointBdd.Posts}
+                logged={this.props.logged}
+                currentUser={this.props.currentUser}
+                placeId={currentPointBdd.Id}
+              />
             </div>
             <div className="pagelieu-block pagelieu-fix">
               <CentresInteret currentCatId={currentPointBdd.Placetype} />
@@ -158,6 +164,10 @@ class Lieu extends React.Component {
     return <div>je charge</div>;
   }
 }
+
+Lieu.propTypes = {
+  logged: PropTypes.bool.isRequired,
+};
 
 /**
  * Export

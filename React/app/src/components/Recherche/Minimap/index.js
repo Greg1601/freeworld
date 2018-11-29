@@ -10,7 +10,7 @@ const Minimap = ({ lat, lon, categoryId, point }) => (
     <Map
       center={[lat, lon]}
       zoom={21}
-      id="map"
+      id="minimap"
     >
       <TileLayer
         attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"

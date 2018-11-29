@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 /**
  * Local import
  */
@@ -39,7 +40,7 @@ class Commentaires extends React.Component {
                 onClick={this.showCommentForm}
                 className="buttonplus-icon"
               />
-              {this.props.currentUser ?
+              {this.props.logged ?
                 <div>
                   {didPost ?
                     <p>Vous avez déjà donné votre avis</p>
@@ -49,10 +50,10 @@ class Commentaires extends React.Component {
                 </div>
               :
                 <p>
-                  <NavLink exact to="/Login" className="link">Connectez-vous</NavLink>
+                  <NavLink exact to="/Login" className="link">Connectez-vous </NavLink>
                    ou
-                   <NavLink exact to="Signup" className="link">créez un compte</NavLink>
-                    pour laisser un commentaire !
+                  <NavLink exact to="Signup" className="link"> créez un compte </NavLink>
+                  pour laisser un commentaire !
                 </p>
               }
             </div>
@@ -80,7 +81,7 @@ class Commentaires extends React.Component {
               onClick={this.showCommentForm}
               className="buttonplus-icon"
             />
-            {this.props.currentUser ?
+            {this.props.logged ?
               <CommentForm />
             :
               <p>
@@ -104,6 +105,9 @@ class Commentaires extends React.Component {
   }
 }
 
+Commentaires.propTypes = {
+  logged: PropTypes.bool.isRequired,
+};
 /**
  * Export
  */

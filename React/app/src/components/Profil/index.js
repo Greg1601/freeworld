@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
@@ -35,9 +36,8 @@ class Profil extends React.Component {
 
   render() {
     const { view } = this.state;
-    const { classes, currentUser, email } = this.props;
-    console.log(this.props)
-    if (currentUser) {
+    const { logged } = this.props;
+    if (logged) {
       return (
         <div>
           <div className="profil">
@@ -45,8 +45,6 @@ class Profil extends React.Component {
             <div>
               <FicheProfil
                 changeState={this.changeView}
-                currentUser={currentUser}
-                email={email}
               />
             </div>
           }
@@ -70,6 +68,9 @@ class Profil extends React.Component {
   }
 }
 
+Profil.propTypes = {
+  logged: PropTypes.bool.isRequired,
+};
 /**
  * Export
  */

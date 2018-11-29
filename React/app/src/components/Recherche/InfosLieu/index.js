@@ -15,6 +15,11 @@ const styles = theme => ({
   progress: {
     margin: theme.spacing.unit * 2,
   },
+  font: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: '2.5em',
+    },
+  },
 });
 
 const InfosLieu = ({
@@ -77,7 +82,7 @@ const InfosLieu = ({
         <NavLink exact to={placeUrl(id, name)}>
           <Button
             variant={contained}
-            className="pagelieu-button"
+            className={classes.font}
             onClick={getInfo(point)}
           >
             Voir

@@ -19,6 +19,7 @@ const styles = theme => ({
     flexGrow: 1,
     [theme.breakpoints.down('md')]: {
       maxWidth: '80%',
+      margin: 'auto',
     },
   },
   header: {
@@ -35,6 +36,11 @@ const styles = theme => ({
     overflow: 'hidden',
     width: '100%',
   },
+  button: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: '2em',
+    },
+  }
 });
 
 class CarousselImage extends React.Component {
@@ -93,13 +99,13 @@ class CarousselImage extends React.Component {
           activeStep={activeStep}
           className={classes.mobileStepper}
           nextButton={
-            <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
+            <Button size="small" className={classes.button} onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
               Next
               {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
             </Button>
           }
           backButton={
-            <Button size="small" onClick={this.handleBack} disabled={activeStep === 0}>
+            <Button size="small" className={classes.button} onClick={this.handleBack} disabled={activeStep === 0}>
               {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
               Back
             </Button>

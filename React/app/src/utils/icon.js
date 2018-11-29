@@ -1,40 +1,40 @@
-import Leaflet from 'leaflet';
+import L from 'leaflet';
 
 const myIcon = (categoryId) => {
-  const bankIcon = new Leaflet.Icon({
+  const bankIcon = new L.Icon({
     iconUrl: '../images/bank.png',
   });
-  const foodIcon = new Leaflet.Icon({
+  const foodIcon = new L.Icon({
     iconUrl: '../images/food.png',
   });
-  const governmentIcon = new Leaflet.Icon({
+  const governmentIcon = new L.Icon({
     iconUrl: '../images/government.png',
   });
-  const healthIcon = new Leaflet.Icon({
+  const healthIcon = new L.Icon({
     iconUrl: '../images/health.png',
   });
-  const hotelIcon = new Leaflet.Icon({
+  const hotelIcon = new L.Icon({
     iconUrl: '../images/hotel.png',
   });
-  const leisureIcon = new Leaflet.Icon({
+  const leisureIcon = new L.Icon({
     iconUrl: '../images/leisure.png',
   });
-  const miscIcon = new Leaflet.Icon({
+  const miscIcon = new L.Icon({
     iconUrl: '../images/misc.png',
   });
-  const schoolIcon = new Leaflet.Icon({
+  const schoolIcon = new L.Icon({
     iconUrl: '../images/school.png',
   });
-  const shoppingIcon = new Leaflet.Icon({
+  const shoppingIcon = new L.Icon({
     iconUrl: '../images/shopping.png',
   });
-  const sportIcon = new Leaflet.Icon({
+  const sportIcon = new L.Icon({
     iconUrl: '../images/sport.png',
   });
-  const tourismIcon = new Leaflet.Icon({
+  const tourismIcon = new L.Icon({
     iconUrl: '../images/tourism.png',
   });
-  const transportIcon = new Leaflet.Icon({
+  const transportIcon = new L.Icon({
     iconUrl: '../images/transport.png',
   });
   switch (categoryId) {

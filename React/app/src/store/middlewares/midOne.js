@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { allPoints, allCategories, currentCategoryPoint } from 'src/store/reducer';
 
-const WebSocket = store => next => (action) => {
+const middleware = store => next => (action) => {
   const googleKey = 'AIzaSyBfAdB5uii_xxgMB56wY6q3hicOgmx71Rk';
   const wheelKey = 'y8_6o6axJFWXEe5ZRC4n';
   switch (action.type) {
@@ -53,15 +53,15 @@ const WebSocket = store => next => (action) => {
             token: response.data.token,
             email: action.email,
           })
-            .then(response => store.dispatch({
+            .then(resp => store.dispatch({
               type: 'LOGS',
-              userId: response.data.userId,
-              username: response.data.username,
-              email: response.data.email,
+              userId: resp.data.userId,
+              username: resp.data.username,
+              email: resp.data.email,
             }))
             .catch(() => store.dispatch({
               type: 'FAIL_LOGIN',
-            }))
+            })),
           ));
       break;
     case 'SIGNUP_REQUEST':
@@ -92,8 +92,6 @@ const WebSocket = store => next => (action) => {
           .then(response => store.dispatch({
             type: 'STORE_INFO_BDD',
             currentPointBdd: response.data,
-            positive: response.data.Positive,
-            negative: response.data.Negative,
           })))
         .catch(error => console.log(error));
       break;
@@ -240,4 +238,4 @@ const WebSocket = store => next => (action) => {
  * actionCreators
  */
 
-export default WebSocket;
+export default middleware;

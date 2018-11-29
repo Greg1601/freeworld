@@ -8,7 +8,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
  * Local import
  */
 import reducer from './reducer';
-import WebSocket from './middlewares/midOne';
+import middleware from './middlewares/midOne';
 
 
 /*
@@ -21,8 +21,8 @@ if (window.devToolsExtension) {
 }
 
 // Middlewares
-const socketMiddleware = applyMiddleware(WebSocket);
-const middlewares = compose(socketMiddleware, ...devTools);
+const mainMiddleware = applyMiddleware(middleware);
+const middlewares = compose(mainMiddleware, ...devTools);
 
 // Store
 const store = createStore(reducer, middlewares);
